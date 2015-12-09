@@ -10,19 +10,15 @@ import org.hibernate.Session;
  */
 public class Main {
     public static void main(String[] args) {
-//        Reader reader = new Reader();
-//        reader.setAdress("sdsdc");
-//        reader.setName("sfsfsdf");
-//
-//        reader.setPhone("sdfsdfsdfsdf");
-//        Session session = null;
-//        try { session = HibernateUtil.getSessionFactory().openSession();
-//            session.beginTransaction();
-//            session.save(reader);
-//            session.getTransaction().commit();
-//        } finally {
-//            if ((session != null) && (session.isOpen())) {  session.close();   }
-//        }
+
+        Session session = null;
+        try { session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            session.getTransaction().commit();
+        } finally {
+            if ((session != null) && (session.isOpen())) {  session.close();   }
+        }
     }
 }
 
