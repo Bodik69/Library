@@ -1,10 +1,16 @@
 package com.softserve.edu.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
  * Created by Богдан on 09.12.2015.
  */
+
+@Getter
+@Setter
 @Entity
 @Table(name="book")
 public class Book {
@@ -30,52 +36,4 @@ public class Book {
 
     @Column(name="copyCount")
     private Integer copyCount;
-
-    public Integer getIdBook() {
-        return idBook;
-    }
-
-    public void setIdBook(Integer idBook) {
-        this.idBook = idBook;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getEdition() {
-        return edition;
-    }
-
-    public void setEdition(String edition) {
-        this.edition = edition;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getPages() {
-        return pages;
-    }
-
-    public void setPages(Integer pages) {
-        this.pages = pages;
-    }
-
-    public Integer getCopyCount() {
-        return copyCount;
-    }
-
-    public void setCopyCount(Integer copyCount) {
-        this.copyCount = copyCount;
-    }
 }
