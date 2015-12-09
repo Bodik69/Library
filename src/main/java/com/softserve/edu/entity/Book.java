@@ -23,6 +23,10 @@ public class Book {
     @Column(name="title")
     private String title;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="idAuthor")
+    private Author author;
+
     @Column(name="edition")
     private  String edition;
 
@@ -36,14 +40,14 @@ public class Book {
     private Integer copyCount;
 
     @ManyToMany(cascade=CascadeType.ALL, mappedBy="books")
-    private Set<Author> authors;
+    private Set<Author> coAuthors;
 
 
     public Set<Author> getAuthors() {
-        return this.authors;
+        return this.coAuthors;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setAuthors(Set<Author> coAuthors) {
+        this.coAuthors = coAuthors;
     }
 }

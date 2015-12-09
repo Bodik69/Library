@@ -12,10 +12,10 @@ import java.sql.Date;
 public class Main {
     public static void main(String[] args) {
         Reader reader = new Reader();
-        reader.setAdress("sdsdc");
-        reader.setBirth("sdsdfsdf");
-        reader.setName("sfsfsdf");
-        reader.setPhone("sdfsdfsdfsdf");
+        reader.setAdress("aaa");
+        reader.setBirth("aaa");
+        reader.setName("aaa");
+        reader.setPhone("aaa");
         Session session = null;
         try { session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
