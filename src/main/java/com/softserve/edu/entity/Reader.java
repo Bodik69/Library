@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 /**
  * Created by Ruslan on 09.12.2015.
@@ -33,6 +34,9 @@ public class Reader {
 
     @Column(name = "dateOfCreate")
     private Date dateOfCreate;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reader")
+    private Set<OrderReader> orders;
 
 
 }
