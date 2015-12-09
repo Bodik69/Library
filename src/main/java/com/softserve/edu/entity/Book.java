@@ -5,7 +5,6 @@ import javax.persistence.*;
 /**
  * Created by Богдан on 09.12.2015.
  */
-
 @Entity
 @Table(name="book")
 public class Book {
