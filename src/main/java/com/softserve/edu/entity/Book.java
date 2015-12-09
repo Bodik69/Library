@@ -39,7 +39,7 @@ public class Book {
     @Column(name="copyCount")
     private Integer copyCount;
 
-    @ManyToMany(mappedBy="books")
+    @ManyToMany(mappedBy="books", fetch = FetchType.LAZY)
     private Set<Author> coAuthors;
 
 
