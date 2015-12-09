@@ -1,6 +1,7 @@
 package com.softserve.edu.entity;
 import lombok.*;
 import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by Ruslan on 09.12.2015.
@@ -31,7 +32,7 @@ public class Reader {
     private String birth;
 
     @Column(name = "dateOfCreate")
-    private String dateOfCreate;
+    private Date dateOfCreate;
 
 
 }
