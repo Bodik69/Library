@@ -38,9 +38,12 @@ public class Book {
     @Column(name="copyCount")
     private Integer copyCount;
 
+    @ManyToMany(targetEntity = Author.class,fetch = FetchType.LAZY)
+    @JoinTable(name="coauthors",joinColumns={@JoinColumn(name="code")},
+            inverseJoinColumns={@JoinColumn(name="idAuthor")})
     private Set<Author> authors;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
+
     public Set<Author> getAuthors() {
         return this.authors;
     }
