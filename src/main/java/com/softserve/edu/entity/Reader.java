@@ -1,13 +1,11 @@
 package com.softserve.edu.entity;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.*;
-
 import javax.persistence.*;
 
 /**
  * Created by Ruslan on 09.12.2015.
  */
-@lombok.Getter
+@Getter
 @Setter
 @Entity
 @Table(name = "reader")  // @Table is optional
