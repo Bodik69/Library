@@ -29,7 +29,7 @@ public class Reader {
     private String phone;
 
     @Column(name = "birth")
-    private String birth;
+    private Date birth;
 
     @Column(name = "dateOfCreate")
     private Date dateOfCreate;
