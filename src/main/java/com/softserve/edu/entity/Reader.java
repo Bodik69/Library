@@ -13,26 +13,26 @@ import java.util.Set;
 @Table(name = "reader")  // @Table is optional
 public class Reader {
     @Id
-    @Column(name = "idReader")
+    @Column(name = "idReader", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idReader;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "adress")
+    @Column(name = "adress", nullable = false)
     private String adress;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
 
-    @Column(name = "birth")
+    @Column(name = "birth", nullable = false)
     private Date birth;
 
-    @Column(name = "dateOfCreate")
+    @Column(name = "dateOfCreate", nullable = false)
     private Date dateOfCreate;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reader")

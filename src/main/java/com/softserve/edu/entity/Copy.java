@@ -15,14 +15,14 @@ import javax.persistence.*;
 public class Copy {
 
     @Id
-    @Column(name = "inventoryNumber")
+    @Column(name = "inventoryNumber", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="code")
+    @JoinColumn(name="code", nullable = false)
     private Book book;
 
-    @Column(name = "isInStock")
+    @Column(name = "isInStock", nullable = false)
     private Boolean isInStock;
 }

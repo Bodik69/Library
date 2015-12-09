@@ -17,26 +17,26 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="code")
+    @Column(name="code", nullable = false)
     private Integer idBook;
 
-    @Column(name="title")
+    @Column(name="title", nullable = false)
     private String title;
 
     @ManyToOne
     @JoinColumn(name="idAuthor")
     private Author author;
 
-    @Column(name="edition")
+    @Column(name="edition", nullable = false)
     private  String edition;
 
-    @Column(name="year")
+    @Column(name="year", nullable = false)
     private Integer year;
 
-    @Column(name="pages")
+    @Column(name="pages", nullable = false)
     private Integer pages;
 
-    @Column(name="copyCount")
+    @Column(name="copyCount", nullable = false)
     private Integer copyCount;
 
     @ManyToMany(mappedBy="books", fetch = FetchType.LAZY)

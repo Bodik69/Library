@@ -16,13 +16,13 @@ import java.util.Set;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idAuthor")
+    @Column(name="idAuthor", nullable = false)
     private Integer idAuthor;
 
-    @Column(name="firstName")
+    @Column(name="firstName", nullable = false)
     private String firstName;
 
-    @Column(name="lastName")
+    @Column(name="lastName", nullable = false)
     private String lastName;
 
     @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)

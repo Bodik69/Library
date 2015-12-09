@@ -16,18 +16,18 @@ import java.sql.Date;
 public class OrderReader {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idOrder")
+    @Column(name="idOrder", nullable = false)
     private Integer idOrder;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="idReader")
+    @JoinColumn(name="idReader", nullable = false)
     private Reader reader;
 
     @ManyToOne
-    @JoinColumn(name="inventoryNumber")
+    @JoinColumn(name="inventoryNumber", nullable = false)
     private Copy copy;
 
-    @Column(name="dataOrder")
+    @Column(name="dataOrder", nullable = false)
     private Date dataOrder;
 
     @Column(name="dataReturn")
