@@ -25,7 +25,8 @@ public class Author {
     @Column(name="lastName")
     private String lastName;
 
-    @ManyToMany(targetEntity = Book.class,fetch = FetchType.LAZY)
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="author_book", joinColumns=@JoinColumn(name="idAuthor"), inverseJoinColumns=@JoinColumn(name="code"))
     private Set<Book> books;
 
 

@@ -26,9 +26,6 @@ public class Book {
     @Column(name="edition")
     private  String edition;
 
-    @Column(name="idAuthor")
-    private Author author;
-
     @Column(name="year")
     private Integer year;
 
@@ -38,9 +35,7 @@ public class Book {
     @Column(name="copyCount")
     private Integer copyCount;
 
-    @ManyToMany(targetEntity = Author.class,fetch = FetchType.LAZY)
-    @JoinTable(name="coauthors",joinColumns={@JoinColumn(name="code")},
-            inverseJoinColumns={@JoinColumn(name="idAuthor")})
+    @ManyToMany(cascade=CascadeType.ALL, mappedBy="books")
     private Set<Author> authors;
 
 
