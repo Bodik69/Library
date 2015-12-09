@@ -23,7 +23,7 @@ public class Book {
     @Column(name="title")
     private String title;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="idAuthor")
     private Author author;
 
@@ -39,7 +39,7 @@ public class Book {
     @Column(name="copyCount")
     private Integer copyCount;
 
-    @ManyToMany(cascade=CascadeType.ALL, mappedBy="books")
+    @ManyToMany(mappedBy="books")
     private Set<Author> coAuthors;
 
 
