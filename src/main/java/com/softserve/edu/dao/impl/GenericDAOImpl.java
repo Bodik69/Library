@@ -1,7 +1,11 @@
 package com.softserve.edu.dao.impl;
 
 import com.softserve.edu.dao.GenericDAO;
+import com.softserve.edu.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,26 +20,81 @@ public class GenericDAOImpl<E> implements GenericDAO<E> {
 
     @Override
     public void save(E element) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+            session.save(element);
+            transaction.commit();
+        } finally {
+            if ((session != null) && (session.isOpen())) {
+                session.close();
+            }
+        }
 
     }
 
     @Override
     public void update(E element) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+            session.update(element);
+            transaction.commit();
+        } finally {
+            if ((session != null) && (session.isOpen())) {
+                session.close();
+            }
+        }
 
     }
 
     @Override
     public E find(Long elementId) {
-        return null;
+        Session session = null;
+        E element = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            element = (E) session.get(entityClass, elementId);
+        } finally {
+            if ((session != null) && (session.isOpen())) {
+                session.close();
+            }
+        }
+        return element;
+
     }
 
     @Override
     public List<E> findAll() {
-        return null;
+        Session session = null;
+        List<E> elements = new ArrayList<E>();
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            elements = session.createCriteria(entityClass).list();
+        } finally {
+            if ((session != null) && (session.isOpen())) {
+                session.close();
+            }
+        }
+        return elements;
+
+
     }
 
     @Override
     public void delete(E element) {
-
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+            session.delete(element);
+            transaction.commit();
+        } finally {
+            if ((session != null) && (session.isOpen())) {
+                session.close();
+            }
+        }
     }
 }
