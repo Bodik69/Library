@@ -19,12 +19,10 @@ public class OrderReader {
     @Column(name="idOrder")
     private Integer idOrder;
 
-    @Column(name="idReader")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idReader")
     private Reader reader;
 
-    @Column(name="inventoryNumber")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="inventoryNumber")
     private Copy copy;

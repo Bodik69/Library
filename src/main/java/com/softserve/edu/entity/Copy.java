@@ -19,7 +19,6 @@ public class Copy {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "code")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="code")
     private Book book;
