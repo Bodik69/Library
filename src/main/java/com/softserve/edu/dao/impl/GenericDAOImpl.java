@@ -51,7 +51,7 @@ public class GenericDAOImpl<E> implements GenericDAO<E> {
     }
 
     @Override
-    public E find(Long elementId) {
+    public E find(Integer elementId) {
         Session session = null;
         E element = null;
         try {

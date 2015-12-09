@@ -11,7 +11,7 @@ public interface GenericDAO<E> {
 
     public void update(E element);
 
-    public E find(Long elementId);
+    public E find(Integer elementId);
 
     public List<E> findAll();
 
