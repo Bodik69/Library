@@ -7,7 +7,7 @@ import com.softserve.edu.entity.Book;
  */
 public class BookDAOImpl extends GenericDAOImpl<Book> {
 
-    public BookDAOImpl(Class<Book> entityClass) {
-        super(entityClass);
+    public BookDAOImpl() {
+        super(Book.class);
     }
 }

@@ -7,7 +7,7 @@ import com.softserve.edu.entity.OrderReader;
  */
 public class OrderReaderDAOImpl extends GenericDAOImpl<OrderReader> {
 
-    public OrderReaderDAOImpl(Class<OrderReader> entityClass) {
-        super(entityClass);
+    public OrderReaderDAOImpl() {
+        super(OrderReader.class);
     }
 }

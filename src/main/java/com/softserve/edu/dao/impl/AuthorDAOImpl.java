@@ -7,7 +7,7 @@ import com.softserve.edu.entity.Author;
  */
 public class AuthorDAOImpl extends GenericDAOImpl<Author> {
 
-    public AuthorDAOImpl(Class<Author> entityClass) {
-        super(entityClass);
+    public AuthorDAOImpl() {
+        super(Author.class);
     }
 }

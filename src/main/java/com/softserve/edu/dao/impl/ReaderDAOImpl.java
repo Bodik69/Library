@@ -7,7 +7,7 @@ import com.softserve.edu.entity.Reader;
  */
 public class ReaderDAOImpl extends GenericDAOImpl<Reader> {
 
-    public ReaderDAOImpl(Class<Reader> entityClass) {
-        super(entityClass);
+    public ReaderDAOImpl() {
+        super(Reader.class);
     }
 }

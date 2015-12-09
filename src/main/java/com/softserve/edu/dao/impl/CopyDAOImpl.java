@@ -7,7 +7,7 @@ import com.softserve.edu.entity.Copy;
  */
 public class CopyDAOImpl extends GenericDAOImpl<Copy> {
 
-    public CopyDAOImpl(Class<Copy> entityClass) {
-        super(entityClass);
+    public CopyDAOImpl() {
+        super(Copy.class);
     }
 }
