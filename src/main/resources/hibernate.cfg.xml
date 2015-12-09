@@ -14,5 +14,7 @@
         <mapping class="com.softserve.edu.entity.Reader"/>
         <mapping class="com.softserve.edu.entity.Book"/>
         <mapping class="com.softserve.edu.entity.Author"/>
+        <mapping class="com.softserve.edu.entity.Copy"/>
+        <mapping class="com.softserve.edu.entity.OrderReader"/>
     </session-factory>
 </hibernate-configuration>
