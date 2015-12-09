@@ -25,13 +25,10 @@ public class Author {
     @Column(name="lastName")
     private String lastName;
 
+    @ManyToMany(targetEntity = Book.class,fetch = FetchType.LAZY)
     private Set<Book> books;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "coauthor", joinColumns = {
-            @JoinColumn(name = "idAuthor", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "code",
-                    nullable = false, updatable = false) })
+
     public Set<Book> getBooks() {
         return this.books;
     }

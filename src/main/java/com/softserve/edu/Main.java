@@ -1,5 +1,4 @@
 package com.softserve.edu;
-
 import com.softserve.edu.entity.Author;
 import com.softserve.edu.util.HibernateUtil;
 import org.hibernate.Session;
