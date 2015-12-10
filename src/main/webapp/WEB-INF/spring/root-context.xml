@@ -28,6 +28,7 @@
    (@Annotation-based configuration) -->
     <context:annotation-config />
     <context:component-scan base-package="com.softserve.edu.dao"/>
+    <context:component-scan base-package="com.softserve.edu.service" />
     <!-- Файл с настройками ресурсов для работы с данными (Data Access
    Resources) -->
     <import resource="data.xml" />

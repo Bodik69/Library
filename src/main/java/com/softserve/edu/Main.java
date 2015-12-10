@@ -2,6 +2,7 @@ package com.softserve.edu;
 
 import com.softserve.edu.dao.impl.DaoFactory;
 import com.softserve.edu.entity.Book;
+import com.softserve.edu.service.BookServiceImpl;
 
 
 /**
@@ -10,8 +11,8 @@ import com.softserve.edu.entity.Book;
 public class Main {
     public static void main(String[] args) {
 
-        Book book = DaoFactory.getInstance().getBookDAO().find(1);
-        System.out.println(book.getAuthor().getFirstName());
+        BookServiceImpl bookService = new BookServiceImpl();
+        Book result = bookService.find(1);
 
     }
 }
