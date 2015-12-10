@@ -29,6 +29,26 @@
           <artifactId>lombok</artifactId>
           <version>1.16.6</version>
       </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>4.2.3.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>4.2.3.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-tx</artifactId>
+          <version>4.2.3.RELEASE</version>
+      </dependency>
+
+
   </dependencies>
   <build>
     <finalName>library</finalName>
