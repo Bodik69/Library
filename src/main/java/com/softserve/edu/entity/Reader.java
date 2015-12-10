@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "reader")  // @Table is optional
+@Table(name = "reader")
 public class Reader {
     @Id
     @Column(name = "idReader", nullable = false)
@@ -37,6 +37,5 @@ public class Reader {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reader")
     private Set<OrderReader> orders;
-
 
 }

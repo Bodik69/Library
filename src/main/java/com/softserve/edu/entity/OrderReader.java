@@ -23,7 +23,7 @@ public class OrderReader {
     @JoinColumn(name="idReader", nullable = false)
     private Reader reader;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="inventoryNumber", nullable = false)
     private Copy copy;
 
