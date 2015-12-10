@@ -32,5 +32,4 @@
    Resources) -->
     <import resource="data.xml" />
     <!-- Файл с настройками безопасности -->
-    <import resource="security.xml" />
 </beans>
