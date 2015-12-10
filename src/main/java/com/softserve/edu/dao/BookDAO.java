@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by Ruslan on 10.12.2015.
  */
-public interface BookDAO<Book> extends GenericDAO<Book> {
+public interface BookDAO extends GenericDAO<Book> {
 
 }

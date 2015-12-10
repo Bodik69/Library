@@ -1,6 +1,7 @@
 package com.softserve.edu.dao.impl;
 
 import com.softserve.edu.dao.AuthorDAO;
+import com.softserve.edu.entity.Author;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by Ruslan on 10.12.2015.
  */
 @Repository
-public class AuthorDAOImpl1<Author> implements AuthorDAO<Author> {
+public class AuthorDAOImpl1 implements AuthorDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

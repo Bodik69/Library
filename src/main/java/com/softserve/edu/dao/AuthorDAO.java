@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by Ruslan on 10.12.2015.
  */
-public interface AuthorDAO<Author> extends GenericDAO<Author> {
+public interface AuthorDAO extends GenericDAO<Author> {
 
 }
