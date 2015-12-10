@@ -7,11 +7,6 @@ import java.util.List;
 /**
  * Created by Ruslan on 10.12.2015.
  */
-public interface AuthorDAO {
+public interface AuthorDAO<Author> extends GenericDAO<Author> {
 
-    public void save(Author author);
-    public void update(Author author);
-    public Author find(Integer elementId);
-    public List findAll();
-    public void delete(Author author);
 }

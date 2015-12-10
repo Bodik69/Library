@@ -1,7 +1,6 @@
 package com.softserve.edu.dao.impl;
 
 import com.softserve.edu.dao.AuthorDAO;
-import com.softserve.edu.entity.Author;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by Богдан on 09.12.2015.
+ * Created by Ruslan on 10.12.2015.
  */
 @Repository
-public class AuthorDAOImpl1 implements AuthorDAO {
+public class AuthorDAOImpl1<Author> implements AuthorDAO<Author> {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,14 +28,13 @@ public class AuthorDAOImpl1 implements AuthorDAO {
 
     @Override
     public Author find(Integer elementId) {
-        Author author = null;
-        author = (Author) sessionFactory.getCurrentSession().get(Author.class, elementId);
-        return author;
+        return (Author) sessionFactory.getCurrentSession().get(com.softserve.edu.entity.Author.class,elementId);
+
     }
 
     @Override
     public List<Author> findAll() {
-        return sessionFactory.getCurrentSession().createCriteria(Author.class).list();
+        return sessionFactory.getCurrentSession().createCriteria(com.softserve.edu.entity.Author.class).list();
     }
 
     @Override
