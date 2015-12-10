@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Богдан on 09.12.2015.
  */
-public class GenericDAOImpl<E> implements GenericDAO<E> {
+public abstract class GenericDAOImpl<E> implements GenericDAO<E> {
     private Class<E> entityClass;
 
     public GenericDAOImpl(Class<E> entityClass) {
