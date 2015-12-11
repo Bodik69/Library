@@ -11,8 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookServiceImpl {
 
-    @Autowired
     private BookDAO bookDAO;
+
+    @Autowired
+    public void setBookDAO(BookDAO bookDAO) {
+        this.bookDAO = bookDAO;
+    }
 
     public Book find(Integer id) {
         return bookDAO.find(id);
