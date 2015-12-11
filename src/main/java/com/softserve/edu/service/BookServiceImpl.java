@@ -5,10 +5,13 @@ import com.softserve.edu.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by Богдан on 10.12.2015.
  */
 @Service
+@Transactional
 public class BookServiceImpl {
 
     private BookDAO bookDAO;

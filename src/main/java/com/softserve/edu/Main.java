@@ -15,7 +15,7 @@ public class Main {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/root-context.xml");
         BookServiceImpl bookService = ctx.getBean(BookServiceImpl.class);
-
+        System.out.println(bookService.find(1).getAuthor().getFirstName());
     }
 }
 
