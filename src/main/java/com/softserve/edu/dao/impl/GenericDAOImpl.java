@@ -49,6 +49,9 @@ public abstract class GenericDAOImpl<E> implements GenericDAO<E> {
 
     @Override
     public void delete(Integer id) {
-        sessionFactory.getCurrentSession().delete(id);
+        E element = (E) sessionFactory.getCurrentSession().get(entityClass, id);
+        if (null != element){
+            sessionFactory.getCurrentSession().delete(element);
+        }
     }
 }
