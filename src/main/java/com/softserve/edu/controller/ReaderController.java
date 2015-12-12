@@ -47,4 +47,19 @@ public class ReaderController {
         readerService.delete(idReader);
         return "redirect:/reader";
     }
+
+    @RequestMapping("edit/{idReader}")
+    public String editReader(@PathVariable("idReader") Integer idReader, Model model) {
+        model.addAttribute("readerId", idReader);
+        model.addAttribute("flag", true);
+        List<Reader> readers = readerService.findAll();
+        model.addAttribute("readerList", readers);
+        return "reader";
+    }
+
+    @RequestMapping("/save/{idReader}")
+    public String updateReader(@PathVariable("idReader") Integer idReader) {
+        readerService.update(readerService.findById(idReader));
+        return "redirect:/reader";
+    }
 }

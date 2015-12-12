@@ -55,18 +55,35 @@
             <th>Телефон</th>
             <th>Дата народження</th>
             <th>Дата реєстрації</th>
-            <th>&nbsp;</th>
+            <th>Дії</th>
         </tr>
         <c:forEach var="reader" items="${readerList}">
-        <tr>
-            <td>${reader.name}</td>
-            <td>${reader.surname}</td>
-            <td>${reader.adress}</td>
-            <td>${reader.phone}</td>
-            <td>${reader.birth}</td>
-            <td>${reader.dateOfCreate}</td>
-            <td><a href="delete/${reader.idReader}">Видалити</a></td>
-        </tr>
+        <c:choose>
+            <c:when test="${flag == true && reader.idReader == readerId}">
+                <tr>
+                    <td><input type="text" value="вареник"></td>
+                    <td><input type="text" value="${reader.surname}"></td>
+                    <td><input type="text" value="${reader.adress}"></td>
+                    <td><input type="text" value="${reader.phone}"></td>
+                    <td><input type="text" value="${reader.birth}"></td>
+                    <td><input type="text" value="${reader.dateOfCreate}"></td>
+                    <td><a href="delete/${reader.idReader}">Видалити</a><br>
+                        <a href="save/${reader.idReader}">Зберегти</a></td>
+                </tr>
+                </c:when>
+                <c:otherwise>
+                    <tr>
+                        <td>${reader.name}</td>
+                        <td>${reader.surname}</td>
+                        <td>${reader.adress}</td>
+                        <td>${reader.phone}</td>
+                        <td>${reader.birth}</td>
+                        <td>${reader.dateOfCreate}</td>
+                        <td><a href="delete/${reader.idReader}">Видалити</a><br>
+                            <a href="edit/${reader.idReader}">Редагувати</a></td>
+                    </tr>
+                </c:otherwise>
+        </c:choose>
         </c:forEach>
     </table>
 
