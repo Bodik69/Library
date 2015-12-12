@@ -9,9 +9,14 @@ import java.util.List;
  */
 
 public interface BookService {
+
     public void save(Book book);
+
     public void update(Book book);
+
     public Book find(Integer elementId);
+
     public List<Book> findAll();
+
     public void delete(Integer id);
 }
