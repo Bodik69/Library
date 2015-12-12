@@ -26,4 +26,9 @@ public class BookController {
         map.put("book", bookService.find(1).getAuthor().getFirstName());
         return "App";
     }
+
+    @RequestMapping("/reader")
+    public String findReader(Map<String, Object> map) {
+        return "reader";
+    }
 }
