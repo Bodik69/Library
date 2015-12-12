@@ -18,18 +18,22 @@
     </h2>
 
     <table border="1">
-        <thead><tr style='font-weight: bold; font-size: 16pt'><td colspan='4' style='text-align: center'>Читачі</td></tr></thead>
+        <thead><tr style='font-weight: bold; font-size: 16pt'><td colspan='6' style='text-align: center'>Читачі</td></tr></thead>
         <tr>
-            <th width="25%">Name</th>
-            <th width="25%">Surname</th>
-            <th width="25%"> Address</th>
-            <th width="25%">Phone</th>
+            <th>Ім'я</th>
+            <th>Прізвище</th>
+            <th>Адреса</th>
+            <th>Телефон</th>
+            <th>Дата народження</th>
+            <th>Дата реєстрації</th>
         </tr>
         <tr>
             <td>${reader.name}</td>
             <td>${reader.surname}</td>
             <td>${reader.adress}</td>
             <td>${reader.phone}</td>
+            <td>${reader.birth}</td>
+            <td>${reader.dateOfCreate}</td>
         </tr>
     </table>
 
