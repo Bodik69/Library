@@ -1,7 +1,7 @@
 package com.softserve.edu.controller;
 
 import com.softserve.edu.service.BookService;
-import com.softserve.edu.service.OrderReaderServiceImpl;
+import com.softserve.edu.service.impl.OrderReaderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

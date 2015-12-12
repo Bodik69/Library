@@ -1,4 +1,4 @@
-package com.softserve.edu.service;
+package com.softserve.edu.service.impl;
 
 import com.softserve.edu.dao.OrderReaderDAO;
 import com.softserve.edu.entity.OrderReader;
