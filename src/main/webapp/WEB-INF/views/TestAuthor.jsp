@@ -1,18 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Богдан
+  User: Ruslan
   Date: 11.12.2015
-  Time: 18:46
+  Time: 20:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>dsdhfbsdjhfbsjhdbfhsdf</title>
+    <title>Return Author Surname</title>
 </head>
 <body>
-Результат
-<%= request.getAttribute("book") %>
-<%= request.getAttribute("order") %>
+<%= request.getAttribute("author") %>
 </body>
 </html>

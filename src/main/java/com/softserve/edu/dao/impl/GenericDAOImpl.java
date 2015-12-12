@@ -2,7 +2,6 @@ package com.softserve.edu.dao.impl;
 
 import com.softserve.edu.dao.GenericDAO;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
