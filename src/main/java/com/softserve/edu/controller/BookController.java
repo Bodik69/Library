@@ -1,6 +1,7 @@
 package com.softserve.edu.controller;
 
 import com.softserve.edu.service.BookServiceImpl;
+import com.softserve.edu.service.OrderReaderServiceImpl;
 import com.softserve.edu.service.ReaderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class BookController {
     @Autowired
     private ReaderServiceImpl readerService;
 
+    @Autowired
+    private OrderReaderServiceImpl orderReaderService;
+
     @RequestMapping(value = "/")
     public String showInitialPage() {
         return "index";
@@ -31,9 +35,9 @@ public class BookController {
         return "App";
     }
 
-    @RequestMapping("/reader")
-    public String findReader(Map<String, Object> map) {
-        map.put("reader", readerService.findReader(1).getName());
+    @RequestMapping("/order")
+    public String findOrder(Map<String, Object> map) {
+        map.put("order", orderReaderService.findOrder(1).getReader().getName());
         return "App";
     }
 }

@@ -13,6 +13,6 @@
 <body>
 Результат
 <%= request.getAttribute("book") %>
-<%= request.getAttribute("reader") %>
+<%= request.getAttribute("order") %>
 </body>
 </html>
