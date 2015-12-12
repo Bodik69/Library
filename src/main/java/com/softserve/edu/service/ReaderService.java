@@ -1,13 +1,14 @@
-package com.softserve.edu.dao;
+package com.softserve.edu.service;
 
 import com.softserve.edu.entity.Reader;
 
 import java.util.List;
 
 /**
- * Created by Ruslan on 10.12.2015.
+ * Created by Ihor Sokolyk on 12.12.2015.
  */
-public interface ReaderDAO {
+
+public interface ReaderService {
     public void saveReader(Reader reader);
     public void updateReader(Reader reader);
     public Reader findById(Integer id);

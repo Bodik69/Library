@@ -27,8 +27,4 @@ public class BookController {
         return "App";
     }
 
-    @RequestMapping("/reader")
-    public String findReader(Map<String, Object> map) {
-        return "reader";
-    }
 }
