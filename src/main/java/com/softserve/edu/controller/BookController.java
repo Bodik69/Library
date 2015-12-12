@@ -1,8 +1,7 @@
 package com.softserve.edu.controller;
 
-import com.softserve.edu.service.BookServiceImpl;
+import com.softserve.edu.service.BookService;
 import com.softserve.edu.service.OrderReaderServiceImpl;
-import com.softserve.edu.service.ReaderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +15,7 @@ import java.util.Map;
 public class BookController {
 
     @Autowired
-    private BookServiceImpl bookService;
-
-    @Autowired
-    private ReaderServiceImpl readerService;
+    private BookService bookService;
 
     @Autowired
     private OrderReaderServiceImpl orderReaderService;
