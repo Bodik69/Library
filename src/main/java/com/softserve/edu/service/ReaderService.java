@@ -9,9 +9,14 @@ import java.util.List;
  */
 
 public interface ReaderService {
+
     public void save(Reader reader);
+
     public void update(Reader reader);
+
     public Reader findById(Integer id);
+
     public List<Reader> findAll();
+
     public void delete (Integer id);
 }
