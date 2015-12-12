@@ -1,9 +1,10 @@
-package com.softserve.edu.service;
+package com.softserve.edu.service.impl;
 
 import com.softserve.edu.dao.AuthorDAO;
 import com.softserve.edu.dao.BookDAO;
 import com.softserve.edu.entity.Author;
 import com.softserve.edu.entity.Book;
+import com.softserve.edu.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

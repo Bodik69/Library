@@ -1,7 +1,8 @@
-package com.softserve.edu.service;
+package com.softserve.edu.service.impl;
 
 import com.softserve.edu.dao.ReaderDAO;
 import com.softserve.edu.entity.Reader;
+import com.softserve.edu.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class ReaderServiceImpl implements ReaderService{
+public class ReaderServiceImpl implements ReaderService {
 
     @Autowired
     private ReaderDAO readerDAO;

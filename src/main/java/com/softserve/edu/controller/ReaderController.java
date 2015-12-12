@@ -1,15 +1,9 @@
 package com.softserve.edu.controller;
 
-import com.softserve.edu.entity.Reader;
 import com.softserve.edu.service.ReaderService;
-import com.softserve.edu.service.ReaderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
