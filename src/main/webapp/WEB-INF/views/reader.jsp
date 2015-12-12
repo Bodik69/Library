@@ -57,6 +57,7 @@
             <th>Дата реєстрації</th>
             <th>&nbsp;</th>
         </tr>
+        <c:forEach var="reader" items="${readerList}">
         <tr>
             <td>${reader.name}</td>
             <td>${reader.surname}</td>
@@ -66,6 +67,7 @@
             <td>${reader.dateOfCreate}</td>
             <td><a href="delete/${reader.idReader}">Видалити</a></td>
         </tr>
+        </c:forEach>
     </table>
 
 </body>

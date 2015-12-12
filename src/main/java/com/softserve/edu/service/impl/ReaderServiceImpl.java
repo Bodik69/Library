@@ -13,33 +13,37 @@ import java.util.List;
  * Created by Ihor Sokolyk on 12.12.2015.
  */
 @Service
-@Transactional
 public class ReaderServiceImpl implements ReaderService {
 
     @Autowired
     private ReaderDAO readerDAO;
 
     @Override
-    public void saveReader(Reader reader) {
-        readerDAO.saveReader(reader);
+    @Transactional
+    public void save(Reader reader) {
+        readerDAO.save(reader);
     }
 
     @Override
-    public void updateReader(Reader reader) {
-        readerDAO.updateReader(reader);
+    @Transactional
+    public void update(Reader reader) {
+        readerDAO.update(reader);
     }
 
     @Override
+    @Transactional
     public Reader findById(Integer id) {
-        return readerDAO.findById(id);
+        return readerDAO.find(id);
     }
 
     @Override
+    @Transactional
     public List<Reader> findAll() {
         return readerDAO.findAll();
     }
 
     @Override
+    @Transactional
     public void delete(Integer id) {
         readerDAO.delete(id);
     }

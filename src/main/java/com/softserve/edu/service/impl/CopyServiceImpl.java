@@ -41,7 +41,7 @@ public class CopyServiceImpl implements CopyService {
     }
 
     @Override
-    public void delete(Copy copy) {
-        copyDAO.delete(copy);
+    public void delete(Integer id) {
+        copyDAO.delete(id);
     }
 }

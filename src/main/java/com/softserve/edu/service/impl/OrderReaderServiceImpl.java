@@ -34,7 +34,7 @@ public class OrderReaderServiceImpl {
         return orderReaderDAO.findAll();
     }
 
-    public void deleteOrder(OrderReader reader) {
-        orderReaderDAO.delete(reader);
+    public void deleteOrder(Integer id) {
+        orderReaderDAO.delete(id);
     }
 }

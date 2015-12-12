@@ -12,5 +12,5 @@ public interface AuthorService {
     public void update(Author author);
     public Author find(Integer elementId);
     public List<Author> findAll();
-    public void delete(Author author);
+    public void delete(Integer id);
 }

@@ -15,6 +15,6 @@ public interface GenericDAO<E> {
 
     public List<E> findAll();
 
-    public void delete(E element);
+    public void delete(Integer id);
 
 }

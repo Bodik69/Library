@@ -13,5 +13,5 @@ public interface BookService {
     public void update(Book book);
     public Book find(Integer elementId);
     public List<Book> findAll();
-    public void delete(Book book);
+    public void delete(Integer id);
 }

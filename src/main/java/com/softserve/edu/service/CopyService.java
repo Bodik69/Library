@@ -14,5 +14,5 @@ public interface CopyService {
     public void update(Copy copy);
     public Copy find(Integer elementId);
     public List<Copy> findAll();
-    public void delete(Copy copy);
+    public void delete(Integer id);
 }
