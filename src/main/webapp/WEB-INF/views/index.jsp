@@ -9,8 +9,8 @@
 <form action="/book" method="GET">
     <input type="submit" value="Книжки">
 </form>
-<form action="/author" method="GET">
-    <input type="submit" value="Автори">
+<form action="/order" method="GET">
+    <input type="submit" value="Журнал">
 </form>
 </body>
 </html>
