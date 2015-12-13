@@ -1,12 +1,15 @@
 package com.softserve.edu.service.impl;
 
+import com.softserve.edu.dao.AuthorDAO;
 import com.softserve.edu.dao.BookDAO;
+import com.softserve.edu.entity.Author;
 import com.softserve.edu.entity.Book;
 import com.softserve.edu.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -18,6 +21,9 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookDAO bookDAO;
 
+    @Autowired
+    private AuthorDAO authorDAO;
+
     @Override
     public Book find(Integer id) {
         return bookDAO.find(id);
@@ -25,6 +31,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void save(Book book) {
+        Author author = authorDAO.findAuthorByFullName(book.getAuthor().getFirstName(), book.getAuthor().getLastName());
+        if(author == null) {
+            authorDAO.save(book.getAuthor());
+        }
+        if(book.getAuthor().getBooks() == null) {
+            book.getAuthor().setBooks(new HashSet<Book>());
+        }
+        book.getAuthor().getBooks().add(book);
         bookDAO.save(book);
     }
 

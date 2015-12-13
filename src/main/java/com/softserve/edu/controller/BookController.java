@@ -27,7 +27,7 @@ public class BookController {
 
     @RequestMapping(value = "/book", method = RequestMethod.POST)
     public String addBook(@ModelAttribute("book") Book book, BindingResult result) {
-        String s = book.getTitle();
+        bookService.save(book);
         return "redirect:/book";
     }
 

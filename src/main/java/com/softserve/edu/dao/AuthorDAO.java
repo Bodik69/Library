@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface AuthorDAO extends GenericDAO<Author>{
 
-
+        public Author findAuthorByFullName(String firstName, String lastName);
 }
