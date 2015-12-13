@@ -1,12 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-    <title>Журнал бібліотеки</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <title>Orders</title>
 </head>
 <body>
-<form method="post" action="order">
+<form method="post" action="add">
     <table>
         <tr>
             <td>Прізвище: </td>
