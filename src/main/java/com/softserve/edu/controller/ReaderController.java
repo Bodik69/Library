@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -20,8 +21,8 @@ public class ReaderController {
     @Autowired
     private ReaderService readerService;
 
-    @RequestMapping(value = "/reader")
-    public String ReaderName(Model model) {
+    @RequestMapping(value = "/reader", method = RequestMethod.GET)
+    public String ReaderList(Model model) {
         List<Reader> readers = readerService.findAll();
         model.addAttribute("readerList", readers);
         return "reader";
@@ -49,12 +50,10 @@ public class ReaderController {
     }
 
     @RequestMapping("edit/{idReader}")
-    public String editReader(@PathVariable("idReader") Integer idReader, Model model) {
+    public String editReader(@PathVariable("idReader") Integer idReader, Model model, RedirectAttributes redirectAttributes) {
         model.addAttribute("readerId", idReader);
         model.addAttribute("flag", true);
-        List<Reader> readers = readerService.findAll();
-        model.addAttribute("readerList", readers);
-        return "reader";
+        return "redirect:/reader";
     }
 
     @RequestMapping("/save/{idReader}")

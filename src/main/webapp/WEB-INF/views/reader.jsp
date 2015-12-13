@@ -57,11 +57,13 @@
             <th>Дата реєстрації</th>
             <th>Дії</th>
         </tr>
+
+        <h2>${flag}</h2>
         <c:forEach var="reader" items="${readerList}">
         <c:choose>
             <c:when test="${flag == true && reader.idReader == readerId}">
                 <tr>
-                    <td><input type="text" value="вареник"></td>
+                    <td><input type="text" value="${reader.name}"></td>
                     <td><input type="text" value="${reader.surname}"></td>
                     <td><input type="text" value="${reader.adress}"></td>
                     <td><input type="text" value="${reader.phone}"></td>
