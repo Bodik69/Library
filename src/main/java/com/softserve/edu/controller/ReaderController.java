@@ -1,12 +1,16 @@
 package com.softserve.edu.controller;
 
+import com.softserve.edu.entity.Copy;
+import com.softserve.edu.entity.OrderReader;
 import com.softserve.edu.entity.Reader;
 import com.softserve.edu.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sun.text.resources.pl.CollationData_pl;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -29,16 +33,9 @@ public class ReaderController {
         return "reader";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addReader(@RequestParam("name") String name, @RequestParam("surname") String surname,
-                            @RequestParam("address") String address, @RequestParam("phone") String phone,
-                            @RequestParam("birth") String birth) {
-        Reader reader = new Reader();
-        reader.setName(name);
-        reader.setSurname(surname);
-        reader.setAdress(address);
-        reader.setPhone(phone);
-        reader.setBirth(Date.valueOf(birth));
+
+    @RequestMapping(value = "/reader", method = RequestMethod.POST)
+    public String addReader(@ModelAttribute("reader") Reader reader, BindingResult result) {
         reader.setDateOfCreate(Date.valueOf(LocalDate.now()));
         readerService.save(reader);
         return "redirect:/reader";
@@ -51,10 +48,10 @@ public class ReaderController {
     }
 
     @RequestMapping("edit/{idReader}")
-    public String editReader(@PathVariable("idReader") Integer idReader, Model model, RedirectAttributes redirectAttributes) {
+    public String editReader(@PathVariable("idReader") Integer idReader, Model model) {
         model.addAttribute("readerId", idReader);
         model.addAttribute("flag", true);
-        return "redirect:/reader";
+        return "reader";
     }
 
     @RequestMapping("/save/{idReader}")
