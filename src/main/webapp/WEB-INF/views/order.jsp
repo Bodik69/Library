@@ -46,6 +46,11 @@
             <td>${order.copy.id}</td>
             <td>${order.dataOrder}</td>
             <td>${order.dataReturn}</td>
+            <c set var test="null"/>
+            <c:if test="${order.dataReturn == null}">
+                <td><a href="order/return/${order.idOrder}">Здати книгу</a></td>
+            </c:if>
+
         </tr>
     </c:forEach>
 </table>

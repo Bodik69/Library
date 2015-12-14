@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -36,6 +38,13 @@ public class OrderReaderServiceImpl implements OrderReaderService {
         Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
         orderReader.setReader(reader);
         orderReaderDAO.save(orderReader);
+    }
+
+    @Override
+    public void addDataReturn(Integer elementId) {
+        OrderReader orderReader = orderReaderDAO.find(elementId);
+        orderReader.setDataReturn(Date.valueOf(LocalDate.now()));
+        orderReaderDAO.update(orderReader);
     }
 
     @Override

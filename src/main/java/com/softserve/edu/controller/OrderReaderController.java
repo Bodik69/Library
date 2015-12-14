@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,6 +34,12 @@ public class OrderReaderController {
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
         orderReaderService.save(orderReader);
+        return "redirect:/order";
+    }
+
+    @RequestMapping(value = "/order/return/{idOrder}", method = RequestMethod.GET)
+    public String addBookCopy(@PathVariable("idOrder") Integer id) {
+        orderReaderService.addDataReturn(id);
         return "redirect:/order";
     }
 }

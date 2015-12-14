@@ -11,6 +11,8 @@ public interface OrderReaderService {
 
     public void save(OrderReader orderReader);
 
+    public void addDataReturn(Integer elementId);
+
     public void update(OrderReader orderReader);
 
     public OrderReader find(Integer elementId);
