@@ -7,4 +7,5 @@ import com.softserve.edu.entity.Reader;
  */
 public interface ReaderDAO extends GenericDAO<Reader>{
 
+    public Reader findReaderById(Integer id);
 }
