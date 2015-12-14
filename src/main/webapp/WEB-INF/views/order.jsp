@@ -50,7 +50,7 @@
             <c:if test="${order.dataReturn == null}">
                 <td><a href="order/return/${order.idOrder}">Здати книгу</a></td>
             </c:if>
-
+            <td><a href="order/delete/${order.idOrder}">Видалити</a>
         </tr>
     </c:forEach>
 </table>

@@ -42,4 +42,10 @@ public class OrderReaderController {
         orderReaderService.addDataReturn(id);
         return "redirect:/order";
     }
+
+    @RequestMapping("/order/delete/{idOrder}")
+    public String deleteOrder(@PathVariable("idOrder") Integer idOrder) {
+        orderReaderService.delete(idOrder);
+        return "redirect:/order";
+    }
 }
