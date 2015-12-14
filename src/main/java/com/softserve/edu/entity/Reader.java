@@ -35,7 +35,7 @@ public class Reader {
     @Column(name = "dateOfCreate", nullable = false)
     private Date dateOfCreate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reader")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reader", cascade = CascadeType.ALL)
     private Set<OrderReader> orders;
 
 }

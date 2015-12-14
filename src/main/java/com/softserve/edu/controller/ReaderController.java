@@ -24,6 +24,7 @@ public class ReaderController {
     @RequestMapping(value = "/reader", method = RequestMethod.GET)
     public String ReaderList(Model model) {
         List<Reader> readers = readerService.findAll();
+        model.addAttribute("reader", new Reader());
         model.addAttribute("readerList", readers);
         return "reader";
     }
