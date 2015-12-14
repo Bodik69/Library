@@ -42,7 +42,7 @@ public class OrderReaderController {
     }
 
     @RequestMapping(value = "/order/return/{idOrder}", method = RequestMethod.GET)
-    public String addBookCopy(@PathVariable("idOrder") Integer id) {
+    public String addDataReturn(@PathVariable("idOrder") Integer id) {
         orderReaderService.addDataReturn(id);
         return "redirect:/order";
     }
@@ -50,6 +50,23 @@ public class OrderReaderController {
     @RequestMapping("/order/delete/{idOrder}")
     public String deleteOrder(@PathVariable("idOrder") Integer idOrder) {
         orderReaderService.delete(idOrder);
+        return "redirect:/order";
+    }
+
+    @RequestMapping("editOrder/{idOrder}")
+    public String editOrder(@PathVariable("idOrder") Integer idOrder, Model model) {
+        OrderReader editOrderReader= orderReaderService.find(idOrder);
+        model.addAttribute("editOrderReader", editOrderReader);
+        model.addAttribute("orderReader", new OrderReader());
+        model.addAttribute("id", idOrder);
+        return "editOrderReader";
+    }
+
+    @RequestMapping(value = "editOrder/saveOrder/{idOrder}", method = RequestMethod.POST)
+    public String updateOrder(@PathVariable("idOrder") Integer idOrder,
+                               @ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
+
+        orderReaderService.update(orderReader, idOrder);
         return "redirect:/order";
     }
 }
