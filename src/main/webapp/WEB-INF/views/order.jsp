@@ -27,7 +27,7 @@
         </tr>
     </table>
 </form:form>
-<table border="1" cellspacing="0" cellpadding="5">
+<table border="1" cellspacing="0" cellpadding="3">
     <caption>
         <h2> Журнал бібліотеки</h2>
     </caption>
@@ -50,12 +50,13 @@
             <c set var test="null"/>
             <c:choose>
                 <c:when test="${order.dataReturn != null}">
-                    <td><a href="order/delete/${order.idOrder}">Видалити</a></td>
+                    <td><a href="order/delete/${order.idOrder}">Видалити</a><br>
                 </c:when>
                 <c:otherwise>
-                    <td><a href="order/return/${order.idOrder}">Здати книгу</a></td>
+                    <td><a href="order/return/${order.idOrder}">Здати книгу</a><br>
                 </c:otherwise>
             </c:choose>
+            <a href="editOrder/${order.idOrder}">Редагувати</a></td>
         </tr>
     </c:forEach>
 </table>

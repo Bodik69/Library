@@ -13,7 +13,7 @@ public interface OrderReaderService {
 
     public void addDataReturn(Integer elementId);
 
-    public void update(OrderReader orderReader);
+    public void update(OrderReader orderReader, Integer idOrder);
 
     public OrderReader find(Integer elementId);
 

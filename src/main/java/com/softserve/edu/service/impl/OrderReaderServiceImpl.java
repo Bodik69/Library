@@ -48,8 +48,13 @@ public class OrderReaderServiceImpl implements OrderReaderService {
     }
 
     @Override
-    public void update(OrderReader orderReader) {
-        orderReaderDAO.update(orderReader);
+    public void update(OrderReader orderReader,Integer idOrder) {
+        OrderReader orderReaderUpdate = find(idOrder);
+        orderReaderUpdate.setCopy(orderReader.getCopy());
+        orderReaderUpdate.setReader(orderReader.getReader());
+        orderReaderUpdate.setDataOrder(orderReader.getDataOrder());
+        orderReaderUpdate.setDataReturn(orderReader.getDataReturn());
+        orderReaderDAO.update(orderReaderUpdate);
     }
 
     @Override
