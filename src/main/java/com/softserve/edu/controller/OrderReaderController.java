@@ -1,6 +1,5 @@
 package com.softserve.edu.controller;
 
-import com.softserve.edu.entity.Book;
 import com.softserve.edu.entity.Copy;
 import com.softserve.edu.entity.OrderReader;
 import com.softserve.edu.entity.Reader;
@@ -24,11 +23,16 @@ public class OrderReaderController {
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String findAllOrders(Model model) {
-        model.addAttribute("order", new OrderReader());
-        model.addAttribute("reader", new Reader());
-        model.addAttribute("book", new Book());
-        model.addAttribute("copy", new Copy());
+        model.addAttribute("reader",new Reader());
+        model.addAttribute("copy",new Copy());
+        model.addAttribute("orderReader",new OrderReader());
         model.addAttribute("orders", orderReaderService.findAll());
         return "order";
+    }
+
+    @RequestMapping(value = "/order", method = RequestMethod.POST)
+    public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
+        orderReaderService.save(orderReader);
+        return "redirect:/order";
     }
 }

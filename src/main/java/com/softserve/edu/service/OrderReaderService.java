@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface OrderReaderService {
 
-    public void save(OrderReader author);
+    public void save(OrderReader orderReader);
 
-    public void update(OrderReader author);
+    public void update(OrderReader orderReader);
 
     public OrderReader find(Integer elementId);
 

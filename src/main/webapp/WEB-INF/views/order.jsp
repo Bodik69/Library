@@ -4,42 +4,30 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-    <title>Orders</title>
+    <title>Books</title>
 </head>
 <body>
-<form method="post" action="add">
+<form:form action="order" method="post" modelAttribute="orderReader" commandName="orderReader">
     <table>
         <tr>
-            <td>Прізвище: </td>
-            <td><input type="text" name="surname"></td>
+            <td><form:label path="copy.id">Інвентарний номер: </form:label></td>
+            <td><form:input path="copy.id"/></td>
         </tr>
         <tr>
-            <td>Ім'я: </td>
-            <td><input type="text" name="name"></td>
+            <td><form:label path="reader.idReader">Читацький номер: </form:label></td>
+            <td><form:input path="reader.idReader"/></td>
         </tr>
         <tr>
-            <td>Книжка: </td>
-            <td><input type="text" name="book"></td>
-        </tr>
-        <tr>
-            <td>Інвентарний номер: </td>
-            <td><input type="text" name="inventoryNumber"></td>
-        </tr>
-        <tr>
-            <td>Дата видачі: </td>
-            <td><input type="text" name="dataOrder"></td>
-        </tr>
-        <tr>
-            <td>Дата повернення: </td>
-            <td><input type="text" name="dataReturn"></td>
+            <td><form:label path="dataOrder">Дата видачі: </form:label></td>
+            <td><form:input path="dataOrder"/></td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="Додати" />
+                <input type="submit" value="Додати"/>
             </td>
         </tr>
     </table>
-</form>
+</form:form>
 <table>
     <caption>Журнал бібліотеки</caption>
     <tr>
@@ -55,7 +43,7 @@
             <td>${order.reader.surname}</td>
             <td>${order.reader.name}</td>
             <td>${order.copy.book.title}</td>
-            <td>${order.copy.id}</td>>
+            <td>${order.copy.id}</td>
             <td>${order.dataOrder}</td>
             <td>${order.dataReturn}</td>
         </tr>

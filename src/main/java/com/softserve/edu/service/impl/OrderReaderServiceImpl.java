@@ -1,6 +1,8 @@
 package com.softserve.edu.service.impl;
 
+import com.softserve.edu.dao.CopyDAO;
 import com.softserve.edu.dao.OrderReaderDAO;
+import com.softserve.edu.entity.Copy;
 import com.softserve.edu.entity.OrderReader;
 import com.softserve.edu.service.OrderReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +21,19 @@ public class OrderReaderServiceImpl implements OrderReaderService {
     @Autowired
     private OrderReaderDAO orderReaderDAO;
 
+    @Autowired
+    private CopyDAO copyDAO;
+
     @Override
-    public void save(OrderReader reader) {
-        orderReaderDAO.save(reader);
+    public void save(OrderReader orderReader) {
+        Copy copy = copyDAO.findCopyByInventory(orderReader.getCopy().getId());
+        orderReader.setCopy(copy);
+        orderReaderDAO.save(orderReader);
     }
 
     @Override
-    public void update(OrderReader reader) {
-        orderReaderDAO.update(reader);
+    public void update(OrderReader orderReader) {
+        orderReaderDAO.update(orderReader);
     }
 
     @Override
