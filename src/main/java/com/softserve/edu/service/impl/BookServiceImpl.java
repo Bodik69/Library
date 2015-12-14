@@ -77,7 +77,7 @@ public class BookServiceImpl implements BookService {
         if(oldBook != null) {
             oldBook.setTitle(book.getTitle());
             oldBook.setEdition(book.getEdition());
-            oldBook.setCopyCount(book.getCopyCount());
+            //oldBook.setCopyCount(book.getCopyCount());
             oldBook.setPages(book.getPages());
             oldBook.setYear(book.getYear());
             Author author = authorDAO.findAuthorByFullName(book.getAuthor().getFirstName(), book.getAuthor().getLastName());

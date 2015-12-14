@@ -27,10 +27,10 @@
             <td><form:label path="pages">К-ть сторінок: </form:label></td>
             <td><form:input path="pages" value="${book.pages}"/></td>
         </tr>
-        <tr>
+        <%--<tr>
             <td><form:label path="copyCount">К-ть копій: </form:label></td>
             <td><form:input path="copyCount" value="${book.copyCount}"/></td>
-        </tr>
+        </tr>--%>
         <tr>
             <td><form:label path="author.firstName">Ім'я автора: </form:label></td>
             <td><form:input path="author.firstName" value="${book.author.firstName}"/></td>
