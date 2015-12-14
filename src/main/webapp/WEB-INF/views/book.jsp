@@ -63,7 +63,7 @@
             <td>${book.year}</td>
             <td>${book.pages}</td>
             <td>${book.copyCount}</td>
-            <td><a href="book/add/${book.idBook}">Додати(+) копію</a></td>
+            <td><a href="book/add/${book.idBook}" title="Додати копію книги">+</a></td>
         </tr>
     </c:forEach>
 </table>
