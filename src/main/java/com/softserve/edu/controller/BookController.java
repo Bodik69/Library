@@ -32,9 +32,25 @@ public class BookController {
         return "redirect:/book";
     }
 
-    @RequestMapping(value = "/book/add/{idbook}", method = RequestMethod.GET)
-    public String addBookCopy(@PathVariable("idbook") Integer idBook) {
+    @RequestMapping(value = "/book/add/{idBook}", method = RequestMethod.GET)
+    public String addBookCopy(@PathVariable("idBook") Integer idBook) {
         bookService.addBookCopy(idBook);
+        return "redirect:/book";
+    }
+
+    @RequestMapping(value = "/book/edit/{idBook}", method = RequestMethod.GET)
+    public String editBookPage(@PathVariable("idBook") Integer idBook, Model model) {
+        Book book = bookService.find(idBook);
+        if(book == null) {
+            return "redirect:/book";
+        }
+        model.addAttribute("book", book);
+        return "editBook";
+    }
+
+    @RequestMapping(value = "/book/edit/{idBook}", method = RequestMethod.POST)
+    public String editBookInfo(@ModelAttribute("book") Book book, @PathVariable("idBook") Integer idBook, BindingResult result) {
+        bookService.updateBookById(book, idBook);
         return "redirect:/book";
     }
 

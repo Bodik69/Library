@@ -40,10 +40,7 @@ public class BookServiceImpl implements BookService {
         if(author == null) {
             authorDAO.save(book.getAuthor());
         }
-        if(book.getAuthor().getBooks() == null) {
-            book.getAuthor().setBooks(new HashSet<Book>());
-        }
-        book.getAuthor().getBooks().add(book);
+        addBookToAuthor(book);
         for(int i = 0; i < book.getCopyCount(); i++) {
             Copy copy = new Copy();
             copy.setBook(book);
@@ -63,6 +60,34 @@ public class BookServiceImpl implements BookService {
             copy.setIsInStock(true);
             bookDAO.update(book);
             copyDAO.save(copy);
+        }
+    }
+
+    @Override
+    public void addBookToAuthor(Book book) {
+        if(book.getAuthor().getBooks() == null) {
+            book.getAuthor().setBooks(new HashSet<Book>());
+        }
+        book.getAuthor().getBooks().add(book);
+    }
+
+    @Override
+    public void updateBookById(Book book, Integer id) {
+        Book oldBook = bookDAO.find(id);
+        if(oldBook != null) {
+            oldBook.setTitle(book.getTitle());
+            oldBook.setEdition(book.getEdition());
+            oldBook.setCopyCount(book.getCopyCount());
+            oldBook.setPages(book.getPages());
+            oldBook.setYear(book.getYear());
+            Author author = authorDAO.findAuthorByFullName(book.getAuthor().getFirstName(), book.getAuthor().getLastName());
+            if(author == null) {
+                authorDAO.deleteBookByID(oldBook.getAuthor(), oldBook.getIdBook());
+                authorDAO.save(book.getAuthor());
+            }
+            oldBook.setAuthor(book.getAuthor());
+            addBookToAuthor(oldBook);
+            bookDAO.update(oldBook);
         }
     }
 
