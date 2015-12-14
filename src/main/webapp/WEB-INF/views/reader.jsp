@@ -46,9 +46,12 @@
             </tr>
         </table>
     </form:form>
+    <c:if test="${exist == true}">
+        <h3 style="color: red;">Такий читач вже зареєстрований в бібіліотеці!</h3>
+    </c:if>
     <br>
     <table border="1">
-        <thead><tr style='font-weight: bold; font-size: 16pt'><td colspan='7' style='text-align: center'>Читачі</td></tr></thead>
+        <thead><tr style='font-weight: bold; font-size: 16pt'><td colspan='7' style='text-align: center'>Читачі бібліотеки</td></tr></thead>
         <tr>
             <th>Ім'я</th>
             <th>Прізвище</th>
@@ -67,7 +70,7 @@
                 <td>${reader.phone}</td>
                 <td>${reader.birth}</td>
                 <td>${reader.dateOfCreate}</td>
-                <td><a href="delete/${reader.idReader}">Видалити</a><br>
+                <td><a href="delete/${reader.idReader}" onclick="if (confirm('Ви дійсно бажаєте видалити даного читача?')) return true; else return false;">Видалити</a><br>
                 <a href="edit/${reader.idReader}">Редагувати</a></td>
             </tr>
         </c:forEach>

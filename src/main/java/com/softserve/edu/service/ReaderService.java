@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ReaderService {
 
-    public void save(Reader reader);
+    public Boolean save(Reader reader);
 
     public void update(Reader reader, Integer id);
 

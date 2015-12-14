@@ -17,6 +17,7 @@ import java.util.List;
  */
 @Controller
 public class ReaderController {
+    private Boolean exist = false;
 
     @Autowired
     private ReaderService readerService;
@@ -26,13 +27,14 @@ public class ReaderController {
         List<Reader> readers = readerService.findAll();
         model.addAttribute("reader", new Reader());
         model.addAttribute("readerList", readers);
+        model.addAttribute("exist", exist);
         return "reader";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addReader(@ModelAttribute("reader") Reader reader, BindingResult result) {
         reader.setDateOfCreate(Date.valueOf(LocalDate.now()));
-        readerService.save(reader);
+        exist = readerService.save(reader);
         return "redirect:/reader";
     }
 

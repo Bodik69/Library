@@ -20,8 +20,14 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     @Transactional
-    public void save(Reader reader) {
-        readerDAO.save(reader);
+    public Boolean save(Reader reader) {
+        Reader r = readerDAO.findReaderByFullName(reader.getName(), reader.getSurname(), reader.getBirth());
+        if (r == null){
+            readerDAO.save(reader);
+            return false;
+        }else {
+            return true;
+        }
     }
 
     @Override
