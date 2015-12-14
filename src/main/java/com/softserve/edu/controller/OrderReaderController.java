@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  * Created by Ruslan on 13.12.2015.
  */
@@ -33,6 +36,7 @@ public class OrderReaderController {
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
+        orderReader.setDataOrder(Date.valueOf(LocalDate.now()));
         orderReaderService.save(orderReader);
         return "redirect:/order";
     }
