@@ -12,6 +12,8 @@ public interface BookService {
 
     public void save(Book book);
 
+    public void addBookCopy(Integer idBook);
+
     public void update(Book book);
 
     public Book find(Integer elementId);

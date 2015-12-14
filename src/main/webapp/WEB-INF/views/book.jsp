@@ -53,6 +53,7 @@
         <th>Рік</th>
         <th>К-ть сторінок</th>
         <th>К-ть копій</th>
+        <th>Операції</th>
     </tr>
     <c:forEach var="book" items="${books}">
         <tr>
@@ -62,6 +63,7 @@
             <td>${book.year}</td>
             <td>${book.pages}</td>
             <td>${book.copyCount}</td>
+            <td><a href="book/add/${book.idBook}">Додати(+) копію</a></td>
         </tr>
     </c:forEach>
 </table>
