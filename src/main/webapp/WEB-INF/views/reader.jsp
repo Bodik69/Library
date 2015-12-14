@@ -17,11 +17,11 @@
     <h2>
         Менеджер читачів
     </h2>
-    <form:form method="post" action="reader" modelAttribute="reader" commandName="reader">
+    <form:form method="post" action="add" modelAttribute="reader" commandName="reader">
         <table>
             <tr>
                 <td><form:label path="name">Ім'я</form:label></td>
-                <td><form:input path="name"/></td>
+                <td><form:input path="name" /></td>
             </tr>
             <tr>
                 <td><form:label path="surname">Прізвище</form:label></td>
@@ -59,34 +59,17 @@
             <th>Дії</th>
         </tr>
 
-        <h2>${flag}</h2>
         <c:forEach var="reader" items="${readerList}">
-        <c:choose>
-            <c:when test="${flag == true && reader.idReader == readerId}">
-                <tr>
-                    <td><input type="text" value="${reader.name}"></td>
-                    <td><input type="text" value="${reader.surname}"></td>
-                    <td><input type="text" value="${reader.adress}"></td>
-                    <td><input type="text" value="${reader.phone}"></td>
-                    <td><input type="text" value="${reader.birth}"></td>
-                    <td><input type="text" value="${reader.dateOfCreate}"></td>
-                    <td><a href="delete/${reader.idReader}">Видалити</a><br>
-                        <a href="save/${reader.idReader}">Зберегти</a></td>
-                </tr>
-                </c:when>
-                <c:otherwise>
-                    <tr>
-                        <td>${reader.name}</td>
-                        <td>${reader.surname}</td>
-                        <td>${reader.adress}</td>
-                        <td>${reader.phone}</td>
-                        <td>${reader.birth}</td>
-                        <td>${reader.dateOfCreate}</td>
-                        <td><a href="delete/${reader.idReader}">Видалити</a><br>
-                            <a href="edit/${reader.idReader}">Редагувати</a></td>
-                    </tr>
-                </c:otherwise>
-        </c:choose>
+            <tr>
+                <td>${reader.name}</td>
+                <td>${reader.surname}</td>
+                <td>${reader.adress}</td>
+                <td>${reader.phone}</td>
+                <td>${reader.birth}</td>
+                <td>${reader.dateOfCreate}</td>
+                <td><a href="delete/${reader.idReader}">Видалити</a><br>
+                <a href="edit/${reader.idReader}">Редагувати</a></td>
+            </tr>
         </c:forEach>
     </table>
 

@@ -26,8 +26,14 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     @Transactional
-    public void update(Reader reader) {
-        readerDAO.update(reader);
+    public void update(Reader reader, Integer id) {
+        Reader reader1 = findById(id);
+        reader1.setPhone(reader.getPhone());
+        reader1.setName(reader.getName());
+        reader1.setSurname(reader.getSurname());
+        reader1.setBirth(reader.getBirth());
+        reader1.setAdress(reader.getAdress());
+        readerDAO.update(reader1);
     }
 
     @Override

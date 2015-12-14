@@ -1,7 +1,5 @@
 package com.softserve.edu.controller;
 
-import com.softserve.edu.entity.Copy;
-import com.softserve.edu.entity.OrderReader;
 import com.softserve.edu.entity.Reader;
 import com.softserve.edu.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sun.text.resources.pl.CollationData_pl;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -33,8 +29,7 @@ public class ReaderController {
         return "reader";
     }
 
-
-    @RequestMapping(value = "/reader", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addReader(@ModelAttribute("reader") Reader reader, BindingResult result) {
         reader.setDateOfCreate(Date.valueOf(LocalDate.now()));
         readerService.save(reader);
@@ -49,14 +44,18 @@ public class ReaderController {
 
     @RequestMapping("edit/{idReader}")
     public String editReader(@PathVariable("idReader") Integer idReader, Model model) {
-        model.addAttribute("readerId", idReader);
-        model.addAttribute("flag", true);
-        return "reader";
+        Reader editReader = readerService.findById(idReader);
+        model.addAttribute("editReader", editReader);
+        model.addAttribute("reader", new Reader());
+        model.addAttribute("id", idReader);
+        return "editReader";
     }
 
-    @RequestMapping("/save/{idReader}")
-    public String updateReader(@PathVariable("idReader") Integer idReader) {
-        readerService.update(readerService.findById(idReader));
+    @RequestMapping(value = "edit/save/{idReader}", method = RequestMethod.POST)
+    public String updateReader(@PathVariable("idReader") Integer idReader,
+                               @ModelAttribute("reader") Reader reader, BindingResult result) {
+
+        readerService.update(reader, idReader);
         return "redirect:/reader";
     }
 }

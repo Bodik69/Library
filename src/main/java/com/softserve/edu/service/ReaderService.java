@@ -12,7 +12,7 @@ public interface ReaderService {
 
     public void save(Reader reader);
 
-    public void update(Reader reader);
+    public void update(Reader reader, Integer id);
 
     public Reader findById(Integer id);
 
