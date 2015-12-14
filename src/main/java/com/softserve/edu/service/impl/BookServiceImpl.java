@@ -2,8 +2,10 @@ package com.softserve.edu.service.impl;
 
 import com.softserve.edu.dao.AuthorDAO;
 import com.softserve.edu.dao.BookDAO;
+import com.softserve.edu.dao.CopyDAO;
 import com.softserve.edu.entity.Author;
 import com.softserve.edu.entity.Book;
+import com.softserve.edu.entity.Copy;
 import com.softserve.edu.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,9 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private AuthorDAO authorDAO;
 
+    @Autowired
+    private CopyDAO copyDAO;
+
     @Override
     public Book find(Integer id) {
         return bookDAO.find(id);
@@ -39,6 +44,12 @@ public class BookServiceImpl implements BookService {
             book.getAuthor().setBooks(new HashSet<Book>());
         }
         book.getAuthor().getBooks().add(book);
+        for(int i = 0; i < book.getCopyCount(); i++) {
+            Copy copy = new Copy();
+            copy.setBook(book);
+            copy.setIsInStock(true);
+            copyDAO.save(copy);
+        }
         bookDAO.save(book);
     }
 
