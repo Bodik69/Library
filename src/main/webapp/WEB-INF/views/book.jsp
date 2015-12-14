@@ -56,7 +56,7 @@
     </tr>
     <c:forEach var="book" items="${books}">
         <tr>
-            <td>${boo}</td>
+            <td>${book.title}</td>
             <td>${book.author.firstName} ${book.author.lastName}</td>
             <td>${book.edition}</td>
             <td>${book.year}</td>
