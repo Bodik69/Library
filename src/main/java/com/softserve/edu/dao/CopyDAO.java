@@ -10,4 +10,5 @@ import java.util.List;
 public interface CopyDAO extends GenericDAO<Copy> {
     public Copy findCopyByInventory(Integer id);
 
+    public List getAllCopiesOfBook(Integer idOfBook);
 }

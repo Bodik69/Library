@@ -45,15 +45,4 @@ public class CopyServiceImpl implements CopyService {
         copyDAO.delete(id);
     }
 
-    public boolean isAllCopiesOfBookInStock(Integer idOfBook) {
-        boolean result = true;
-        List<Copy> copies = copyDAO.findAll();
-        for(Copy copy: copies) {
-            if(copy.getBook().getIdBook().equals(idOfBook) && !copy.getIsInStock()) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
 }

@@ -7,6 +7,11 @@
     <title>Books</title>
 </head>
 <body>
+<c:if test="${not empty error}">
+    <script type="text/javascript">
+        alert(${error});
+    </script>
+</c:if>
 <form:form action="book" method="post" modelAttribute="book" commandName="book">
     <table>
         <tr>
@@ -66,6 +71,7 @@
             <td>
                 <a href="book/add/${book.idBook}" title="Додати копію книги">+</a>
                 <a href="book/edit/${book.idBook}" title="Редагувати інформацію про книгу">Редагувати</a>
+                <a href="book/remove/${book.idBook}" title="Вилучити книгу з бібліотеки">Вилучити</a>
             </td>
         </tr>
     </c:forEach>

@@ -54,5 +54,12 @@ public class BookController {
         return "redirect:/book";
     }
 
+    @RequestMapping(value = "/book/remove/{idBook}", method = RequestMethod.GET)
+    public String removeAllCopiesOfBook(@PathVariable("idBook") Integer idBook, Model model) {
+        if(!bookService.removeAllCopies(idBook)) {
+            model.addAttribute("error", "Неможливо вилучити книги оскільки вони є на руках у читачів");
+        }
+        return "redirect:/book";
+    }
 
 }

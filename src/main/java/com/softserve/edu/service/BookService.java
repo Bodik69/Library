@@ -25,4 +25,6 @@ public interface BookService {
     public List<Book> findAll();
 
     public void delete(Integer id);
+
+    boolean removeAllCopies(Integer id);
 }

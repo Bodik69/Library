@@ -7,6 +7,7 @@ import com.softserve.edu.entity.Author;
 import com.softserve.edu.entity.Book;
 import com.softserve.edu.entity.Copy;
 import com.softserve.edu.service.BookService;
+import com.softserve.edu.service.CopyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,9 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private CopyDAO copyDAO;
 
+    @Autowired
+    private CopyService copyService;
+
     @Override
     public Book find(Integer id) {
         return bookDAO.find(id);
@@ -41,13 +45,13 @@ public class BookServiceImpl implements BookService {
             authorDAO.save(book.getAuthor());
         }
         addBookToAuthor(book);
+        bookDAO.save(book);
         for(int i = 0; i < book.getCopyCount(); i++) {
             Copy copy = new Copy();
             copy.setBook(book);
             copy.setIsInStock(true);
             copyDAO.save(copy);
         }
-        bookDAO.save(book);
     }
 
     @Override
@@ -104,5 +108,26 @@ public class BookServiceImpl implements BookService {
     @Override
     public void delete(Integer id) {
         bookDAO.delete(id);
+    }
+
+    @Override
+    public boolean removeAllCopies(Integer id) {
+        boolean isAllInStock = true;
+        List copies = copyDAO.getAllCopiesOfBook(id);
+        for(Object copy: copies) {
+            if(!((Copy)copy).getIsInStock()) {
+                isAllInStock = false;
+                break;
+            }
+        }
+        if(isAllInStock) {
+            for(Object copy: copies) {
+                copyDAO.delete(((Copy)copy).getId());
+            }
+            Book book = bookDAO.find(id);
+            authorDAO.deleteBookByID(book.getAuthor(), id);
+            bookDAO.delete(id);
+        }
+        return isAllInStock;
     }
 }
