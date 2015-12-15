@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../../resources/js/book/formValidation.js"></script>
     <script src="../../resources/js/hideCheckBoxes.js"></script>
+    <script src="../../resources/js/book/formForAddingCopies.js"></script>
     <link href="../../resources/css/book.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Books</title>
@@ -20,6 +21,7 @@
 </c:if>
 <form:form id="addBook" action="book" method="post" modelAttribute="book" commandName="book">
     <table>
+        <caption>Додати нову книгу</caption>
         <tr class="group">
             <td><form:label path="title">Назва</form:label></td>
             <td><form:input path="title"/></td>
@@ -70,7 +72,7 @@
     </tr>
     <c:forEach var="book" items="${books}">
         <tr>
-            <td><input type="checkbox" class="checkbox" name="idlist" value="${book.idBook}" /></td>
+            <td><input type="checkbox" class="checkbox" name="idlist" value="${book.idBook}"/></td>
             <td>${book.title}</td>
             <td>${book.author.firstName} ${book.author.lastName}</td>
             <td>${book.edition}</td>
@@ -87,29 +89,5 @@
 </table>
     <input id="deleteChecked" type="submit" value="Submit now" />
 </form>
-<script>
-    $(document).ready(function() {
-        var clicked = null;
-       $(".addCopy").click(function() {
-           if($(this).text() === "-") {
-               clicked.html("+");
-               clicked = null;
-               $(".countForm").remove();
-           } else {
-               if (clicked !== null) {
-                   clicked.html("+");
-                   $(".countForm").remove();
-               }
-               clicked = $(this);
-               var url = "book/add/" + $(this).attr('id');
-               $(this).html("-");
-               $(this).after("<span class='countForm group'>"
-                + "<form id='count-copy-form' action=" + url + " method='post'>"
-                +       "<input type='text' name='count'><input type='submit' value='Додати'>"
-                + "</form></span>");
-           }
-       });
-    });
-</script>
 </body>
 </html>
