@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
@@ -37,5 +38,20 @@ public class Author {
                 append(firstName).
                 append(lastName).
                 toHashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj){
+        if(obj instanceof Author){
+            final Author other = (Author) obj;
+            return new EqualsBuilder()
+                    .append(idAuthor, other.idAuthor)
+                    .append(firstName, other.firstName)
+                    .append(lastName, other.lastName)
+                    .append(books, other.books)
+                    .isEquals();
+        } else{
+            return false;
+        }
     }
 }

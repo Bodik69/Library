@@ -1,5 +1,6 @@
 package com.softserve.edu.entity;
 import lombok.*;
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
@@ -51,5 +52,23 @@ public class Reader {
                 append(birth).
                 append(dateOfCreate).
                 toHashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj){
+        if(obj instanceof Reader){
+            final Reader other = (Reader) obj;
+            return new EqualsBuilder()
+                    .append(name, other.name)
+                    .append(surname, other.surname)
+                    .append(adress, other.adress)
+                    .append(phone, other.phone)
+                    .append(birth, other.birth)
+                    .append(dateOfCreate, other.dateOfCreate)
+                    .append(orders, other.orders)
+                    .isEquals();
+        } else{
+            return false;
+        }
     }
 }

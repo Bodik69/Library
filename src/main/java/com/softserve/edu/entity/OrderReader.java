@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
@@ -43,5 +44,21 @@ public class OrderReader {
                 append(dataOrder).
                 append(dataReturn).
                 toHashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj){
+        if(obj instanceof OrderReader){
+            final OrderReader other = (OrderReader) obj;
+            return new EqualsBuilder()
+                    .append(idOrder, other.idOrder)
+                    .append(reader, other.reader)
+                    .append(copy, other.copy)
+                    .append(dataOrder, other.dataOrder)
+                    .append(dataReturn, other.dataReturn)
+                    .isEquals();
+        } else{
+            return false;
+        }
     }
 }

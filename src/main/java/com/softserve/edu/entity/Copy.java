@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
@@ -34,5 +35,19 @@ public class Copy {
                 append(book).
                 append(isInStock).
                 toHashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj){
+        if(obj instanceof Copy){
+            final Copy other = (Copy) obj;
+            return new EqualsBuilder()
+                    .append(id, other.id)
+                    .append(book, other.book)
+                    .append(isInStock, other.isInStock)
+                    .isEquals();
+        } else{
+            return false;
+        }
     }
 }
