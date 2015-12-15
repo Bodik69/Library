@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class BookController {
@@ -51,6 +48,12 @@ public class BookController {
     @RequestMapping(value = "/book/edit/{idBook}", method = RequestMethod.POST)
     public String editBookInfo(@ModelAttribute("book") Book book, @PathVariable("idBook") Integer idBook, BindingResult result) {
         bookService.updateBookById(book, idBook);
+        return "redirect:/book";
+    }
+
+    @RequestMapping(value = "/book/delete", method = RequestMethod.POST)
+    public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
+        bookService.removeAllCopies(list[0]);
         return "redirect:/book";
     }
 

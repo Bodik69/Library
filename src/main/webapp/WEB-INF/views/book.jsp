@@ -6,6 +6,7 @@
     <script src="../../resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../../resources/js/book/formValidation.js"></script>
+    <script src="../../resources/js/hideCheckBoxes.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Books</title>
 </head>
@@ -52,9 +53,11 @@
         </tr>
     </table>
 </form:form>
+<form id="deleteBookd" action="book/delete" method="post">
 <table>
     <caption>Список книг у бібліотеці</caption>
     <tr>
+        <th>-</th>
         <th>Назва</th>
         <th>Автор</th>
         <th>Видавництво</th>
@@ -65,6 +68,7 @@
     </tr>
     <c:forEach var="book" items="${books}">
         <tr>
+            <td><input type="checkbox" class="checkbox" name="idlist" value="${book.idBook}" /></td>
             <td>${book.title}</td>
             <td>${book.author.firstName} ${book.author.lastName}</td>
             <td>${book.edition}</td>
@@ -79,5 +83,7 @@
         </tr>
     </c:forEach>
 </table>
+    <input id="deleteChecked" type="submit" value="Submit now" />
+</form>
 </body>
 </html>
