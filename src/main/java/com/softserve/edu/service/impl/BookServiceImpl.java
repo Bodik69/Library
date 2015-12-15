@@ -44,6 +44,9 @@ public class BookServiceImpl implements BookService {
         if(author == null) {
             authorDAO.save(book.getAuthor());
         }
+        else {
+            book.setAuthor(author);
+        }
         addBookToAuthor(book);
         bookDAO.save(book);
         for(int i = 0; i < book.getCopyCount(); i++) {
