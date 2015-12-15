@@ -9,6 +9,8 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script src="../../resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/hideCheckBoxes.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Менеджер читачів</title>
 </head>
@@ -50,9 +52,11 @@
         <h3 style="color: red;">Такий читач вже зареєстрований в бібіліотеці!</h3>
     </c:if>
     <br>
+    <form id="deleteReaders" action="reader/delete" method="post">
     <table border="1">
-        <thead><tr style='font-weight: bold; font-size: 16pt'><td colspan='7' style='text-align: center'>Читачі бібліотеки</td></tr></thead>
+        <thead><tr style='font-weight: bold; font-size: 16pt'><td colspan='8' style='text-align: center'>Читачі бібліотеки</td></tr></thead>
         <tr>
+            <th>Вибір</th>
             <th>Ім'я</th>
             <th>Прізвище</th>
             <th>Адреса</th>
@@ -64,6 +68,7 @@
 
         <c:forEach var="reader" items="${readerList}">
             <tr>
+                <td><input type="checkbox" class="checkbox" name="idlist" value="${reader.idReader}" /></td>
                 <td>${reader.name}</td>
                 <td>${reader.surname}</td>
                 <td>${reader.adress}</td>
@@ -75,6 +80,7 @@
             </tr>
         </c:forEach>
     </table>
-
+    <input id="deleteChecked" type="submit" value="Видалити обране" />
+    </form>
 </body>
 </html>

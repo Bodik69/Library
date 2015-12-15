@@ -40,13 +40,21 @@ public class ReaderController {
         return "redirect:/reader";
     }
 
-    @RequestMapping("delete/{idReader}")
+    @RequestMapping(value="delete/{idReader}", method = RequestMethod.GET)
     public String deleteReader(@PathVariable("idReader") Integer idReader) {
         readerService.delete(idReader);
         return "redirect:/reader";
     }
 
-    @RequestMapping("edit/{idReader}")
+    @RequestMapping(value = "/reader/delete", method = RequestMethod.POST)
+    public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
+        for (int i = 0; i < list.length; i++){
+            readerService.delete(list[i]);
+        }
+        return "redirect:/reader";
+    }
+
+    @RequestMapping(value="edit/{idReader}", method = RequestMethod.GET)
     public String editReader(@PathVariable("idReader") Integer idReader, Model model) {
         Reader editReader = readerService.findById(idReader);
         model.addAttribute("editReader", editReader);
@@ -58,7 +66,6 @@ public class ReaderController {
     @RequestMapping(value = "edit/save/{idReader}", method = RequestMethod.POST)
     public String updateReader(@PathVariable("idReader") Integer idReader,
                                @ModelAttribute("reader") Reader reader, BindingResult result) {
-
         readerService.update(reader, idReader);
         return "redirect:/reader";
     }
