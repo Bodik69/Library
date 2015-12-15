@@ -35,4 +35,6 @@ public class CopyDAOImpl extends GenericDAOImpl<Copy> implements CopyDAO {
         query.setParameter("idOfBook", idOfBook);
         return query.list();
     }
+
+
 }

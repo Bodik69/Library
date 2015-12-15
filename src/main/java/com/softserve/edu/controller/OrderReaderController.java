@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -38,7 +35,7 @@ public class OrderReaderController {
         return "order";
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
+    @RequestMapping(value = "/addOrder", method = RequestMethod.POST)
     public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
         orderReader.setDataOrder(Date.valueOf(LocalDate.now()));
         check = orderReaderService.save(orderReader);
@@ -64,6 +61,14 @@ public class OrderReaderController {
         model.addAttribute("orderReader", new OrderReader());
         model.addAttribute("id", idOrder);
         return "editOrderReader";
+    }
+
+    @RequestMapping(value = "/order/delete", method = RequestMethod.POST)
+    public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
+        for (int i = 0; i < list.length; i++){
+            orderReaderService.delete(list[i]);
+        }
+        return "redirect:/reader";
     }
 
     @RequestMapping(value = "editOrder/saveOrder/{idOrder}", method = RequestMethod.POST)
