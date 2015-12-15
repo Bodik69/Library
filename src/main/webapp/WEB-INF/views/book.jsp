@@ -3,8 +3,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-    <script src="../../resources/bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../../resources/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../../resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Books</title>
 </head>
