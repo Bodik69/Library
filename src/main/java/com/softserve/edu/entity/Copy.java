@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 
@@ -25,4 +26,13 @@ public class Copy {
 
     @Column(name = "isInStock", nullable = false)
     private Boolean isInStock;
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().
+                append(id).
+                append(book).
+                append(isInStock).
+                toHashCode();
+    }
 }

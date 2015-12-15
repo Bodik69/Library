@@ -1,5 +1,7 @@
 package com.softserve.edu.entity;
 import lombok.*;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
@@ -38,4 +40,16 @@ public class Reader {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reader", cascade = CascadeType.ALL)
     private Set<OrderReader> orders;
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().
+                append(idReader).
+                append(name).
+                append(surname).
+                append(adress).
+                append(phone).
+                append(birth).
+                append(dateOfCreate).
+                toHashCode();
+    }
 }

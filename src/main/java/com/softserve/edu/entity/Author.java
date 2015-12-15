@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -29,12 +30,12 @@ public class Author {
     @JoinTable(name="author_book", joinColumns=@JoinColumn(name="idAuthor"), inverseJoinColumns=@JoinColumn(name="code"))
     private Set<Book> books;
 
-
-    public Set<Book> getBooks() {
-        return this.books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().
+                append(idAuthor).
+                append(firstName).
+                append(lastName).
+                toHashCode();
     }
 }

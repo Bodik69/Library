@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -33,4 +34,14 @@ public class OrderReader {
     @Column(name="dataReturn")
     private Date dataReturn;
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().
+                append(idOrder).
+                append(reader).
+                append(copy).
+                append(dataOrder).
+                append(dataReturn).
+                toHashCode();
+    }
 }

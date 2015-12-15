@@ -2,6 +2,7 @@ package com.softserve.edu.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -42,12 +43,16 @@ public class Book {
     @ManyToMany(mappedBy="books", fetch = FetchType.LAZY)
     private Set<Author> coAuthors;
 
-
-    public Set<Author> getAuthors() {
-        return this.coAuthors;
-    }
-
-    public void setAuthors(Set<Author> coAuthors) {
-        this.coAuthors = coAuthors;
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().
+                append(idBook).
+                append(title).
+                append(author).
+                append(edition).
+                append(year).
+                append(pages).
+                append(copyCount).
+                toHashCode();
     }
 }
