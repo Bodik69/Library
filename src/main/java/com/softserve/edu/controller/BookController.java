@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class BookController {
 
@@ -52,8 +55,16 @@ public class BookController {
     }
 
     @RequestMapping(value = "/book/delete", method = RequestMethod.POST)
-    public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
-        bookService.removeAllCopies(list[0]);
+    public String deleteAllSelected(@RequestParam("idlist")Integer[] list, Model model) {
+        List<Integer> notDeletedBooks = new ArrayList<>();
+        for(Integer id: list) {
+            if(!bookService.removeAllCopies(id)) {
+                notDeletedBooks.add(id);
+            }
+        }
+        if(notDeletedBooks.size() > 0) {
+            model.addAttribute("error", "Неможливо вилучити деякі книги оскільки вони є на руках у читачів");
+        }
         return "redirect:/book";
     }
 
