@@ -10,8 +10,11 @@
 <html>
 <head>
     <script src="../../resources/js/jquery.min.js"></script>
+    <script type = "text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../../resources/js/hideCheckBoxes.js"></script>
+    <script type="text/javascript" src="../../resources/js/reader/readerFormValidation.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <link href="../../resources/js/reader/reader.css" rel="stylesheet">
     <title>Менеджер читачів</title>
 </head>
 <body>
@@ -19,7 +22,7 @@
     <h2>
         Менеджер читачів
     </h2>
-    <form:form method="post" action="add" modelAttribute="reader" commandName="reader">
+    <form:form class="addReader" method="post" action="add" modelAttribute="reader" commandName="reader">
         <table>
             <tr>
                 <td><form:label path="name">Ім'я</form:label></td>
@@ -80,7 +83,7 @@
             </tr>
         </c:forEach>
     </table>
-    <input id="deleteChecked" type="submit" value="Видалити обране" />
+    <input id="deleteChecked" type="submit" value="Видалити обране" onclick="if (confirm('Ви дійсно бажаєте видалити цих читачів?')) return true; else return false;"/>
     </form>
 </body>
 </html>
