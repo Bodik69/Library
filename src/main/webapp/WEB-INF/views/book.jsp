@@ -5,6 +5,7 @@
 <head>
     <script src="../../resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/book/formValidation.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Books</title>
 </head>
@@ -78,16 +79,5 @@
         </tr>
     </c:forEach>
 </table>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#addBook").validate({
-            rules: {
-                title: {
-                    required: true
-                }
-            }
-        });
-    });
-</script>
 </body>
 </html>
