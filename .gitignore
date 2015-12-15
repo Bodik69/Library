@@ -5,3 +5,4 @@
 /bin/
 /target/
 /test-output/
+/src/main/webapp/resources/bower_components

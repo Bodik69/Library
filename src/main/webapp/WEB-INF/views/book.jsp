@@ -3,6 +3,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
+    <script src="../../resources/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../resources/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Books</title>
 </head>
@@ -12,7 +14,7 @@
         alert(${error});
     </script>
 </c:if>
-<form:form action="book" method="post" modelAttribute="book" commandName="book">
+<form:form id="addBook" action="book" method="post" modelAttribute="book" commandName="book">
     <table>
         <tr>
             <td><form:label path="title">Назва</form:label></td>
@@ -76,5 +78,16 @@
         </tr>
     </c:forEach>
 </table>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#addBook").validate({
+            rules: {
+                title: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
