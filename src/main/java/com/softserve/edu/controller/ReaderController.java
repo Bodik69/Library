@@ -28,7 +28,9 @@ public class ReaderController {
         model.addAttribute("reader", new Reader());
         model.addAttribute("readerList", readers);
         model.addAttribute("exist", exist);
+        exist = false;
         return "reader";
+
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
