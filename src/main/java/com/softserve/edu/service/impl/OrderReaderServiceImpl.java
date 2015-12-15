@@ -36,9 +36,9 @@ public class OrderReaderServiceImpl implements OrderReaderService {
         Copy copy = copyDAO.findCopyByInventory(orderReader.getCopy().getId());
         orderReader.setCopy(copy);
         orderReader.getCopy().setIsInStock(false);
-        copyDAO.update(copy);
         Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
         orderReader.setReader(reader);
+        copyDAO.update(copy);
         orderReaderDAO.save(orderReader);
     }
 
