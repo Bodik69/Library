@@ -58,15 +58,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void addBookCopy(Integer idBook) {
+    public void addNCopyOfBook(Integer idBook, Integer count) {
         Book book = bookDAO.find(idBook);
         if(book != null) {
-            book.setCopyCount(book.getCopyCount() + 1);
-            Copy copy = new Copy();
-            copy.setBook(book);
-            copy.setIsInStock(true);
+            book.setCopyCount(book.getCopyCount() + count);
+            for(int i = 0; i < count; i++) {
+                Copy copy = new Copy();
+                copy.setBook(book);
+                copy.setIsInStock(true);
+                copyDAO.save(copy);
+            }
             bookDAO.update(book);
-            copyDAO.save(copy);
         }
     }
 

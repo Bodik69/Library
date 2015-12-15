@@ -12,7 +12,7 @@ public interface BookService {
 
     public void save(Book book);
 
-    public void addBookCopy(Integer idBook);
+    public void addNCopyOfBook(Integer idBook, Integer count);
 
     public void addBookToAuthor(Book book);
 

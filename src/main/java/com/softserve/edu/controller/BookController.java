@@ -39,9 +39,7 @@ public class BookController {
     @RequestMapping(value = "/book/add/{idBook}")
     public String addBookCopy(@PathVariable("idBook") Integer idBook, @RequestParam("count") Integer count) {
         if(count != null) {
-            for (int i = 0; i < count; i++) {
-                bookService.addBookCopy(idBook);
-            }
+            bookService.addNCopyOfBook(idBook, count);
         }
         return "redirect:/book";
     }
