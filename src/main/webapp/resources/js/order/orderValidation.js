@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    jQuery.validator.addMethod("lettersonly", function(value, element) {
-        return this.optional(element) || /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ]+$/i.test(value);
+    $.validator.addMethod("numbers", function(value, element) {
+        return this.optional(element) || /^[0-9]+$/i.test(value);
     });
     $("#valideOrder").validate({
         rules: {
@@ -11,20 +11,20 @@ $(document).ready(function() {
             "reader.idReader": {
                 required: true,
                 digits: true
+            }
+        },
 
+        messages: {
+            "copy.id": {
+                required: "Обов'язкове поле",
+                digits: "Неправильний формат!Тільки цифри!"
             },
-
-            messages: {
-                "copy.id": {
-                    required: "Обов'язкове поле",
-                    digits: "Тільки цифри"
-                },
-                "reader.idReader": {
-                    required: "Обов'язкове поле",
-                    digits: "Тільки цифри"
-                }
-
+            "reader.idReader": {
+                required: "Обов'язкове поле",
+                digits: "Неправильний формат! Тільки цифри!"
             }
         }
+
+
     });
 });

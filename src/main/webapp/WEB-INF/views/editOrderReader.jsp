@@ -5,10 +5,15 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script src="../../resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/order/orderValidation.js"></script>
+    <script src="../../resources/js/hideCheckBoxes.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Редагування журналу</title>
 </head>
 <body>
-<form:form action="saveOrder/${id}" method="post"  modelAttribute="orderReader" commandName="orderReader">
+<form:form id="valideOrder" action="saveOrder/${id}" method="post"  modelAttribute="orderReader" commandName="orderReader">
     <h2>Редагування замовлення ${editOrderReader.reader.idReader}</h2>
     <table>
         <tr>
