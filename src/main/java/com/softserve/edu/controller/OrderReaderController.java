@@ -25,19 +25,23 @@ public class OrderReaderController {
     @Autowired
     private OrderReaderService orderReaderService;
 
+    private boolean check = true;
+
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String findAllOrders(Model model) {
         model.addAttribute("reader",new Reader());
         model.addAttribute("copy",new Copy());
         model.addAttribute("orderReader",new OrderReader());
         model.addAttribute("orders", orderReaderService.findAll());
+        model.addAttribute("check",check);
+        check=true;
         return "order";
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
         orderReader.setDataOrder(Date.valueOf(LocalDate.now()));
-        orderReaderService.save(orderReader);
+        check = orderReaderService.save(orderReader);
         return "redirect:/order";
     }
 

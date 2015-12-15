@@ -27,6 +27,9 @@
         </tr>
     </table>
 </form:form>
+<c:if test="${check == false}">
+    <h3 style="color: red;">Ви не можете взяти книгу!!!!</h3>
+</c:if>
 <table border="1" cellspacing="0" cellpadding="3">
     <caption>
         <h2> Журнал бібліотеки</h2>

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface OrderReaderService {
 
-    public void save(OrderReader orderReader);
+    public boolean save(OrderReader orderReader);
 
     public void addDataReturn(Integer elementId);
 

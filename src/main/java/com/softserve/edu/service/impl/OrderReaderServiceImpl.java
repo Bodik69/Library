@@ -32,14 +32,19 @@ public class OrderReaderServiceImpl implements OrderReaderService {
     private ReaderDAO readerDAO;
 
     @Override
-    public void save(OrderReader orderReader) {
+    public boolean save(OrderReader orderReader) {
         Copy copy = copyDAO.findCopyByInventory(orderReader.getCopy().getId());
-        orderReader.setCopy(copy);
-        orderReader.getCopy().setIsInStock(false);
-        Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
-        orderReader.setReader(reader);
-        copyDAO.update(copy);
-        orderReaderDAO.save(orderReader);
+        if(copy.getIsInStock()==true) {
+            orderReader.setCopy(copy);
+            orderReader.getCopy().setIsInStock(false);
+            Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
+            orderReader.setReader(reader);
+            copyDAO.update(copy);
+            orderReaderDAO.save(orderReader);
+            return true;
+        }
+        else return false;
+
     }
 
     @Override
@@ -52,8 +57,6 @@ public class OrderReaderServiceImpl implements OrderReaderService {
         orderReaderDAO.update(orderReader);
 
     }
-
-
 
     @Override
     public void update(OrderReader orderReader,Integer idOrder) {
