@@ -15,6 +15,8 @@ import java.util.List;
 @Controller
 public class BookController {
 
+    private String error;
+
     @Autowired
     private BookService bookService;
 
@@ -23,6 +25,8 @@ public class BookController {
         model.addAttribute("book", new Book());
         model.addAttribute("author", new Author());
         model.addAttribute("books", bookService.findAll());
+        model.addAttribute("error", error);
+        error = null;
         return "book";
     }
 
@@ -32,9 +36,13 @@ public class BookController {
         return "redirect:/book";
     }
 
-    @RequestMapping(value = "/book/add/{idBook}", method = RequestMethod.GET)
-    public String addBookCopy(@PathVariable("idBook") Integer idBook) {
-        bookService.addBookCopy(idBook);
+    @RequestMapping(value = "/book/add/{idBook}")
+    public String addBookCopy(@PathVariable("idBook") Integer idBook, @RequestParam("count") Integer count) {
+        if(count != null) {
+            for (int i = 0; i < count; i++) {
+                bookService.addBookCopy(idBook);
+            }
+        }
         return "redirect:/book";
     }
 
@@ -55,7 +63,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/book/delete", method = RequestMethod.POST)
-    public String deleteAllSelected(@RequestParam("idlist")Integer[] list, Model model) {
+    public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
         List<Integer> notDeletedBooks = new ArrayList<>();
         for(Integer id: list) {
             if(!bookService.removeAllCopies(id)) {
@@ -63,15 +71,15 @@ public class BookController {
             }
         }
         if(notDeletedBooks.size() > 0) {
-            model.addAttribute("error", "Неможливо вилучити деякі книги оскільки вони є на руках у читачів");
+            error = "Деякі книги неможливо видалити оскільки вони знаходяться у читачів";
         }
         return "redirect:/book";
     }
 
     @RequestMapping(value = "/book/remove/{idBook}", method = RequestMethod.GET)
-    public String removeAllCopiesOfBook(@PathVariable("idBook") Integer idBook, Model model) {
+    public String removeAllCopiesOfBook(@PathVariable("idBook") Integer idBook) {
         if(!bookService.removeAllCopies(idBook)) {
-            model.addAttribute("error", "Неможливо вилучити книги оскільки вони є на руках у читачів");
+            error = "Неможливо видалити книгу якщо вона знаходиться у читача";
         }
         return "redirect:/book";
     }
