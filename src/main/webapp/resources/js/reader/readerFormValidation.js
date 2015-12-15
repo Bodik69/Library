@@ -1,11 +1,16 @@
 $(document).ready(function() {
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    });
     $(".addReader").validate({
         rules: {
             name: {
-                required: true
+                required: true,
+                lettersonly: true
             },
             surname: {
-                required: true
+                required: true,
+                lettersonly: true
 
             },
             adress: {
@@ -26,10 +31,12 @@ $(document).ready(function() {
 
         messages: {
             name: {
-                required: "Обов'язкове поле"
+                required: "Обов'язкове поле",
+                lettersonly: "Тільки букви"
             },
             surname: {
-                required: "Обов'язкове поле"
+                required: "Обов'язкове поле",
+                    lettersonly: "Тільки букви"
             },
             adress: {
                 required: "Обов'язкове поле"
