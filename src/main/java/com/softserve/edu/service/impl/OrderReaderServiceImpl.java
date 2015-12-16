@@ -33,7 +33,21 @@ public class OrderReaderServiceImpl implements OrderReaderService {
 
     @Override
     public boolean save(OrderReader orderReader) {
+        boolean check = false;
         Copy copy = copyDAO.findCopyByInventory(orderReader.getCopy().getId());
+        List<OrderReader> list = orderReaderDAO.findByReaderId(orderReader.getReader().getIdReader());
+
+
+        Integer code = copy.getBook().getIdBook();
+
+        for(OrderReader orderReader1:list) {
+
+            if(orderReader1.getCopy().getBook().getIdBook() == code) {
+                return false;
+            }
+        }
+
+
         if(copy.getIsInStock()==true) {
             orderReader.setCopy(copy);
             orderReader.getCopy().setIsInStock(false);

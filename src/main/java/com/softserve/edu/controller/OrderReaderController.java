@@ -68,7 +68,7 @@ public class OrderReaderController {
         for (int i = 0; i < list.length; i++){
             orderReaderService.delete(list[i]);
         }
-        return "redirect:/reader";
+        return "redirect:/order";
     }
 
     @RequestMapping(value = "editOrder/saveOrder/{idOrder}", method = RequestMethod.POST)
