@@ -81,6 +81,15 @@ $(document).ready(function() {
         },
         unhighlight: function(element) {
             $(element).closest('.group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.form-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
         }
     });
 });
