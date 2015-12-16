@@ -72,8 +72,7 @@ public class BookServiceImpl implements BookService {
         }
     }
 
-    @Override
-    public void addBookToAuthor(Book book) {
+    private void addBookToAuthor(Book book) {
         if(book.getAuthor().getBooks() == null) {
             book.getAuthor().setBooks(new HashSet<Book>());
         }
