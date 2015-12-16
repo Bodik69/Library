@@ -18,5 +18,5 @@ public interface ReaderService {
 
     public List<Reader> findAll();
 
-    public void delete (Integer id);
+    public void delete(Integer id);
 }
