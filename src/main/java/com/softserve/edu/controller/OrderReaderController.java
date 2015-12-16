@@ -23,7 +23,7 @@ public class OrderReaderController {
     private OrderReaderService orderReaderService;
 
     private boolean check = true;
-
+    private boolean flag = true;
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String findAllOrders(Model model) {
         model.addAttribute("reader",new Reader());
@@ -31,14 +31,21 @@ public class OrderReaderController {
         model.addAttribute("orderReader",new OrderReader());
         model.addAttribute("orders", orderReaderService.findAll());
         model.addAttribute("check",check);
+        model.addAttribute("flag",flag);
         check=true;
+        flag=true;
         return "order";
     }
 
     @RequestMapping(value = "/addOrder", method = RequestMethod.POST)
     public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
-        orderReader.setDataOrder(Date.valueOf(LocalDate.now()));
-        check = orderReaderService.save(orderReader);
+        boolean checkInventoryId = orderReaderService.isBookExist(orderReader);
+        boolean checkReaderById = orderReaderService.isReaderExist(orderReader);
+        if(checkInventoryId && checkReaderById){
+            orderReader.setDataOrder(Date.valueOf(LocalDate.now()));
+            check = orderReaderService.save(orderReader);
+        }
+        else flag = false;
         return "redirect:/order";
     }
 

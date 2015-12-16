@@ -96,4 +96,22 @@ public class OrderReaderServiceImpl implements OrderReaderService {
     public void delete(Integer id) {
         orderReaderDAO.delete(id);
     }
+
+    @Override
+    public boolean isBookExist(OrderReader orderReader) {
+        Copy copy = copyDAO.findCopyByInventory(orderReader.getCopy().getId());
+        if (copy == null) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isReaderExist(OrderReader orderReader) {
+        Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
+        if(reader == null) {
+            return false;
+        }
+        return true;
+    }
 }

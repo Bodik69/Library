@@ -17,6 +17,10 @@ public interface OrderReaderService {
 
     public OrderReader find(Integer elementId);
 
+    public boolean isBookExist(OrderReader orderReader);
+
+    public boolean isReaderExist(OrderReader orderReader);
+
     public List<OrderReader> findAll();
 
     public void delete(Integer id);
