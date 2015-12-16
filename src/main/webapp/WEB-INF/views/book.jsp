@@ -145,5 +145,10 @@
                onclick="if (confirm('Ви дійсно бажаєте видалити ці книги?')) return true; else return false;"/>
     </form>
 </div>
+<div class="row">
+    <div style="margin-bottom:10px;" class="col-sm-offset-5 col-sm-2 text-center">
+        <a href="/" class="btn btn-primary">На головну</a>
+    </div>
+</div>
 </body>
 </html>
