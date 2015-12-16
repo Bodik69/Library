@@ -13,10 +13,10 @@ $(document).ready(function () {
             clicked = $(this);
             var url = "book/add/" + $(this).attr('id');
             $(this).html("-");
-            $(this).after("<span class='countForm group'>"
+            $(this).after("<div class='countForm group'>"
                 + "<form id='count-copy-form' action=" + url + " method='post'>"
-                + "<input type='text' name='count'><input type='submit' value='Додати'>"
-                + "</form></span>");
+                + "<input type='text' name='count'><input type='submit' class='btn btn-primary' value='Додати'>"
+                + "</form></div>");
         }
     });
 });

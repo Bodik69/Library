@@ -112,7 +112,7 @@
 </div>
 <div class="list-books col-md-10 col-md-offset-1" style="margin-bottom: 30px; margin-top: 15px">
     <form id="deleteBook" action="book/delete" method="post">
-        <table class="table">
+        <table class="table table-hover">
             <caption>Список книг у бібліотеці</caption>
             <tr>
                 <th>Вибір</th>
