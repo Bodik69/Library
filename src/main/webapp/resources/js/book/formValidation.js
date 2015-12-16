@@ -4,20 +4,6 @@ $(document).ready(function() {
     jQuery.validator.addMethod("lettersonly", function(value, element) {
         return this.optional(element) || /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ]+$/i.test(value);
     });
-    $("#count-copy-form").validate({
-        rules: {
-            count: {
-                digits: true,
-                required: true
-            }
-        },
-        highlight: function(element) {
-            $(element).closest('.group').addClass('has-error');
-        },
-        unhighlight: function(element) {
-            $(element).closest('.group').removeClass('has-error');
-        }
-    });
     $("#addBook").validate({
         rules: {
             title: {

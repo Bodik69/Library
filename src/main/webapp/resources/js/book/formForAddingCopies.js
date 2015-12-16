@@ -15,7 +15,7 @@ $(document).ready(function () {
             $(this).html("-");
             $(this).after("<div class='countForm group'>"
                 + "<form id='count-copy-form' action=" + url + " method='post'>"
-                + "<input type='text' name='count'><input type='submit' class='btn btn-primary' value='Додати'>"
+                + "<input type='text' name='count' onkeypress='return event.charCode >= 48 && event.charCode <= 57' required><input type='submit' class='btn btn-primary' value='Додати'>"
                 + "</form></div>");
         }
     });
