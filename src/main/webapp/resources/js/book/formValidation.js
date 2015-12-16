@@ -45,6 +45,7 @@ $(document).ready(function() {
             },
             "author.lastName": {
                 lettersonly: true
+
             }
         },
         messages: {

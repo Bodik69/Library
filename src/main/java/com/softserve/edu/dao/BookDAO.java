@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface BookDAO extends GenericDAO<Book> {
 
+    public Book findBookByOtherBookProperties(Book book);
 }

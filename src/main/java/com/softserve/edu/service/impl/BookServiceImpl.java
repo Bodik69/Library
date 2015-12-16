@@ -39,22 +39,31 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void save(Book book) {
-        Author author = authorDAO.findAuthorByFullName(book.getAuthor().getFirstName(), book.getAuthor().getLastName());
-        if(author == null) {
-            authorDAO.save(book.getAuthor());
+    public boolean save(Book book) {
+        Book existingBook = bookDAO.findBookByOtherBookProperties(book);
+        if(existingBook == null) {
+            Author bookAuthor = book.getAuthor();
+            if (!(bookAuthor.getFirstName().equals("") && bookAuthor.getLastName().equals(""))) {
+                Author author = authorDAO.findAuthorByFullName(bookAuthor.getFirstName(), bookAuthor.getLastName());
+                if (author == null) {
+                    authorDAO.save(book.getAuthor());
+                } else {
+                    book.setAuthor(author);
+                }
+                addBookToAuthor(book);
+            } else {
+                book.setAuthor(null);
+            }
+            bookDAO.save(book);
+            for (int i = 0; i < book.getCopyCount(); i++) {
+                Copy copy = new Copy();
+                copy.setBook(book);
+                copy.setIsInStock(true);
+                copyDAO.save(copy);
+            }
+            return true;
         }
-        else {
-            book.setAuthor(author);
-        }
-        addBookToAuthor(book);
-        bookDAO.save(book);
-        for(int i = 0; i < book.getCopyCount(); i++) {
-            Copy copy = new Copy();
-            copy.setBook(book);
-            copy.setIsInStock(true);
-            copyDAO.save(copy);
-        }
+        return false;
     }
 
     @Override
@@ -80,23 +89,33 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void updateBookById(Book book, Integer id) {
-        Book oldBook = bookDAO.find(id);
-        if(oldBook != null) {
-            oldBook.setTitle(book.getTitle());
-            oldBook.setEdition(book.getEdition());
-            //oldBook.setCopyCount(book.getCopyCount());
-            oldBook.setPages(book.getPages());
-            oldBook.setYear(book.getYear());
-            Author author = authorDAO.findAuthorByFullName(book.getAuthor().getFirstName(), book.getAuthor().getLastName());
-            if(author == null) {
-                authorDAO.deleteBookByID(oldBook.getAuthor(), oldBook.getIdBook());
-                authorDAO.save(book.getAuthor());
+    public boolean updateBookById(Book book, Integer id) {
+        if(bookDAO.findBookByOtherBookProperties(book) == null) {
+            Book oldBook = bookDAO.find(id);
+            if (oldBook != null) {
+                oldBook.setTitle(book.getTitle());
+                oldBook.setEdition(book.getEdition());
+                //oldBook.setCopyCount(book.getCopyCount());
+                oldBook.setPages(book.getPages());
+                oldBook.setYear(book.getYear());
+                Author bookAuthor = book.getAuthor();
+                if (!(bookAuthor.getFirstName().equals("") && bookAuthor.getLastName().equals(""))) {
+                    Author author = authorDAO.findAuthorByFullName(bookAuthor.getFirstName(), bookAuthor.getLastName());
+                    if (author == null) {
+                        authorDAO.deleteBookByID(oldBook.getAuthor(), oldBook.getIdBook());
+                        authorDAO.save(book.getAuthor());
+                    }
+                    oldBook.setAuthor(book.getAuthor());
+                    addBookToAuthor(oldBook);
+                } else {
+                    authorDAO.deleteBookByID(oldBook.getAuthor(), oldBook.getIdBook());
+                    oldBook.setAuthor(null);
+                }
+                bookDAO.update(oldBook);
             }
-            oldBook.setAuthor(book.getAuthor());
-            addBookToAuthor(oldBook);
-            bookDAO.update(oldBook);
+            return true;
         }
+        return false;
     }
 
     @Override
@@ -129,7 +148,9 @@ public class BookServiceImpl implements BookService {
                 copyDAO.delete(((Copy)copy).getId());
             }
             Book book = bookDAO.find(id);
-            authorDAO.deleteBookByID(book.getAuthor(), id);
+            if(book.getAuthor() != null) {
+                authorDAO.deleteBookByID(book.getAuthor(), id);
+            }
             bookDAO.delete(id);
         }
         return isAllInStock;
