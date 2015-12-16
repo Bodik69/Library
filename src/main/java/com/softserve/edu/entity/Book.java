@@ -56,6 +56,7 @@ public class Book {
                 append(copyCount).
                 toHashCode();
     }
+
     @Override
     public boolean equals(final Object obj){
         if(obj instanceof Book){
@@ -73,5 +74,19 @@ public class Book {
         } else{
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "\n\tidBook = " + idBook +
+                ", \n\ttitle = " + title +
+                ", \n\tauthor's name = " + author.getFirstName() +
+                ", \n\tauthor's surname = " + author.getLastName() +
+                ", \n\tedition = " + edition +
+                ", \n\tyear = " + year +
+                ", \n\tpages = " + pages +
+                ", \n\tcopyCount = " + copyCount +
+                "\n}";
     }
 }

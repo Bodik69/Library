@@ -54,4 +54,13 @@ public class Author {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "\n\tidAuthor=" + idAuthor +
+                ", \n\tfirstName=" + firstName +
+                ", \n\tlastName=" + lastName +
+                "\n}";
+    }
 }

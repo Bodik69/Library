@@ -50,4 +50,13 @@ public class Copy {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Copy{" +
+                "\n\tid=" + id +
+                ", \n\tbook=" + book.getTitle() +
+                ", \n\tisInStock=" + isInStock +
+                "\n}";
+    }
 }

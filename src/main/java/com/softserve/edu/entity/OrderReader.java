@@ -61,4 +61,16 @@ public class OrderReader {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "OrderReader{" +
+                "\n\tidOrder=" + idOrder +
+                ", \n\treader=" + reader.getName() +
+                ", \n\treader=" + reader.getSurname() +
+                ", \n\tcopy=" + copy.getBook().getTitle() +
+                ", \n\tdataOrder=" + dataOrder +
+                ", \n\tdataReturn=" + dataReturn +
+                "\n}";
+    }
 }

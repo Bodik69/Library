@@ -71,4 +71,17 @@ public class Reader {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "\n\tidReader = " + idReader +
+                ", \n\tname = " + name +
+                ", \n\tsurname = " + surname +
+                ", \n\tadress = " + adress +
+                ", \n\tphone = " + phone +
+                ", \n\tbirth = " + birth +
+                ", \n\tdateOfCreate = " + dateOfCreate +
+                "\n}";
+    }
 }
