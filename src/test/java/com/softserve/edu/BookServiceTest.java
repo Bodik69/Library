@@ -49,6 +49,13 @@ public class BookServiceTest {
         Assert.assertEquals(bookService.findAll(), books);
     }
 
+    @Test
+    public void testUpdateBookToExistingBook() {
+        Book book = books.get(0);
+        when(bookDAO.findBookByOtherBookProperties(book)).thenReturn(new Book());
+        Assert.assertFalse(bookService.updateBookById(book, book.getIdBook()));
+    }
+
     public List<Book> getListBooks() {
         Author author1 = new Author();
         author1.setFirstName("Макс");
