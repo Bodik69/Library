@@ -41,10 +41,17 @@ $(document).ready(function() {
                 required: true
             },
             "author.firstName": {
-                lettersonly: true
+                lettersonly: true,
+                required: function(element) {
+                    return $("#author.lastName").not(':blank');
+                }
             },
             "author.lastName": {
-                lettersonly: true
+                lettersonly: true,
+                required: function(element) {
+                    return $("#author.firstName").not(':blank');
+                }
+
             }
         },
         messages: {
@@ -69,10 +76,12 @@ $(document).ready(function() {
                 digits: "Тільки цифри"
             },
             "author.firstName": {
-                lettersonly: "Тільки букви"
+                lettersonly: "Тільки букви",
+                required: "Якщо присутнє прізвище то повинне бути і ім'я"
             },
             "author.lastName": {
-                lettersonly: "Тільки букви"
+                lettersonly: "Тільки букви",
+                required: "Якщо присутнє ім'я то повинне бути і прізвище"
             }
         },
         highlight: function(element) {
