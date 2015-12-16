@@ -41,16 +41,10 @@ $(document).ready(function() {
                 required: true
             },
             "author.firstName": {
-                lettersonly: true,
-                required: function(element) {
-                    return $("#author.lastName").not(':blank');
-                }
+                lettersonly: true
             },
             "author.lastName": {
-                lettersonly: true,
-                required: function(element) {
-                    return $("#author.firstName").not(':blank');
-                }
+                lettersonly: true
 
             }
         },
@@ -76,12 +70,10 @@ $(document).ready(function() {
                 digits: "Тільки цифри"
             },
             "author.firstName": {
-                lettersonly: "Тільки букви",
-                required: "Якщо присутнє прізвище то повинне бути і ім'я"
+                lettersonly: "Тільки букви"
             },
             "author.lastName": {
-                lettersonly: "Тільки букви",
-                required: "Якщо присутнє ім'я то повинне бути і прізвище"
+                lettersonly: "Тільки букви"
             }
         },
         highlight: function(element) {
