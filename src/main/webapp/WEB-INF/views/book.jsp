@@ -7,8 +7,10 @@
     <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../../resources/js/book/formValidation.js"></script>
     <script src="../../resources/js/hideCheckBoxes.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="../../resources/js/book/formForAddingCopies.js"></script>
-    <link href="../../resources/css/book.css" rel="stylesheet">
+    <!--<link href="../../resources/css/book.css" rel="stylesheet">-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Books</title>
 </head>
@@ -19,7 +21,7 @@
     </div>
     <script>showAlert();</script>
 </c:if>
-<form:form id="addBook" action="book" method="post" modelAttribute="book" commandName="book">
+<form:form id="addBook" action="book" method="post" modelAttribute="book" commandName="book" role="form">
     <table>
         <caption>Додати нову книгу</caption>
         <tr class="group">
@@ -58,10 +60,10 @@
     </table>
 </form:form>
 <form id="deleteBookd" action="book/delete" method="post">
-<table>
+<table class="table">
     <caption>Список книг у бібліотеці</caption>
     <tr>
-        <th>-</th>
+        <th>Вибір</th>
         <th>Назва</th>
         <th>Автор</th>
         <th>Видавництво</th>
