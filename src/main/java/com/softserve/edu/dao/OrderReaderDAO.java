@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface OrderReaderDAO extends GenericDAO<OrderReader> {
 
+    public List<OrderReader> findByReaderId(Integer idReader);
+
 }
