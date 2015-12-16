@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,13 +55,16 @@ public class BookController {
             return "redirect:/book";
         }
         model.addAttribute("book", book);
+        model.addAttribute("error", error);
+        error = null;
         return "editBook";
     }
 
     @RequestMapping(value = "/book/edit/{idBook}", method = RequestMethod.POST)
     public String editBookInfo(@ModelAttribute("book") Book book, @PathVariable("idBook") Integer idBook, BindingResult result) {
         if(!bookService.updateBookById(book, idBook)) {
-            error = "Неможливо додати книгу оскільки книга з такими даними уже є у базі";
+            error = "Неможливо редагувати книгу оскільки книга з такими даними уже є у базі";
+            return "redirect:/book/edit/" + idBook;
         }
         return "redirect:/book";
     }

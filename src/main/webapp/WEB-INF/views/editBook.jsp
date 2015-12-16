@@ -1,50 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
          pageEncoding="utf8" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script src="../../resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/book/formValidation.js"></script>
+    <script src="../../resources/js/hideCheckBoxes.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../../resources/js/book/formForAddingCopies.js"></script>
+    <link href="../../resources/css/book.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Edit Book</title>
 </head>
 <body>
-<form:form action="/book/edit/${book.idBook}" method="post" modelAttribute="book" commandName="book">
-    <table>
-        <caption>Редагувати</caption>
-        <tr>
-            <td><form:label path="title">Назва</form:label></td>
-            <td><form:input path="title" value="${book.title}"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="edition">Видавництво: </form:label></td>
-            <td><form:input path="edition" value="${book.edition}"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="year">Рік: </form:label></td>
-            <td><form:input path="year" value="${book.year}"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="pages">К-ть сторінок: </form:label></td>
-            <td><form:input path="pages" value="${book.pages}"/></td>
-        </tr>
-        <%--<tr>
-            <td><form:label path="copyCount">К-ть копій: </form:label></td>
-            <td><form:input path="copyCount" value="${book.copyCount}"/></td>
-        </tr>--%>
-        <tr>
-            <td><form:label path="author.firstName">Ім'я автора: </form:label></td>
-            <td><form:input path="author.firstName" value="${book.author.firstName}"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="author.lastName">Прізвище автора: </form:label></td>
-            <td><form:input path="author.lastName" value="${book.author.lastName}"/></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Зберегти"/>
-            </td>
-        </tr>
-    </table>
-</form:form>
+<c:if test="${not empty error}">
+    <div id="error-container" class="alert alert-danger col-md-8 col-md-offset-2">
+        <span>${error}</span>
+    </div>
+    <script>showAlert();</script>
+</c:if>
+<div class="container">
+    <div id="addingbox" style="margin-top:30px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Редагувати</div>
+            </div>
+            <div style="padding-top:30px" class="panel-body">
+                <form:form id="addBook" action="/book/edit/${book.idBook}" method="post" modelAttribute="book" commandName="book"
+                           role="form">
+                    <div style="margin-bottom: 5px" class="group">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <form:label path="title">Назва: </form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input class="form-control" path="title"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 5px" class="group">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <form:label path="edition">Видавництво: </form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input class="form-control" path="edition"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 5px" class="group">
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                                <form:label path="year">Рік: </form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input class="form-control" path="year"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 5px" class="group">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <form:label path="pages">К-ть сторінок: </form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input class="form-control" path="pages"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 5px" class="group">
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                                <form:label path="author.firstName">Ім'я автора: </form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input class="form-control" path="author.firstName"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 5px" class="group">
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                                <form:label path="author.lastName">Прізвище автора: </form:label>
+                            </div>
+                            <div class="col-md-8">
+                                <form:input class="form-control" path="author.lastName"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-2" style="margin-bottom: 10px">
+                            <input class="btn btn-success" type="submit" value="Редагувати"/>
+                        </div>
+                    </div>
+                </form:form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
