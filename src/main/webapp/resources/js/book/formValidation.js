@@ -27,10 +27,16 @@ $(document).ready(function() {
                 required: true
             },
             "author.firstName": {
-                lettersonly: true
+                lettersonly: true,
+                required: function(element) {
+                    return $("#author\\.lastName").val().length !== 0;
+                }
             },
             "author.lastName": {
-                lettersonly: true
+                lettersonly: true,
+                required: function(element) {
+                    return $("#author\\.firstName").val().length !== 0;
+                }
 
             }
         },
@@ -56,10 +62,12 @@ $(document).ready(function() {
                 digits: "Тільки цифри"
             },
             "author.firstName": {
-                lettersonly: "Тільки букви"
+                lettersonly: "Тільки букви",
+                required: "Якщо є прізвище, то повинно бути і ім\'я"
             },
             "author.lastName": {
-                lettersonly: "Тільки букви"
+                lettersonly: "Тільки букви",
+                required: "Якщо є ім\'я, то повинно бути і прізвище"
             }
         },
         highlight: function(element) {
