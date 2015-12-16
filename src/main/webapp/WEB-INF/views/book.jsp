@@ -31,45 +31,73 @@
                 <form:form id="addBook" action="book" method="post" modelAttribute="book" commandName="book"
                            role="form">
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="form-group">
-                            <form:label path="title">Назва</form:label><br/>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                            <form:label path="title">Назва: </form:label>
+                            </div>
+                            <div class="col-md-8">
                             <form:input class="form-control" path="title"/>
+                            </div>
                         </div>
                     </div>
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="form-group">
-                            <form:label path="edition">Видавництво: </form:label><br/>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                            <form:label path="edition">Видавництво: </form:label>
+                                </div>
+                            <div class="col-md-8">
                             <form:input class="form-control" path="edition"/>
+                                </div>
                         </div>
                     </div>
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="from-group">
-                            <form:label path="year">Рік: </form:label><br/>
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                            <form:label path="year">Рік: </form:label>
+                                </div>
+                                <div class="col-md-8">
                             <form:input class="form-control" path="year"/>
+                                    </div>
                         </div>
                     </div>
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="form-group">
-                            <form:label path="pages">К-ть сторінок: </form:label><br/>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                            <form:label path="pages">К-ть сторінок: </form:label>
+                                </div>
+                            <div class="col-md-8">
                             <form:input class="form-control" path="pages"/>
+                                </div>
                         </div>
                     </div>
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="from-group">
-                            <form:label path="copyCount">К-ть копій: </form:label><br/>
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                            <form:label path="copyCount">К-ть копій: </form:label>
+                                </div>
+                            <div class="col-md-8">
                             <form:input class="form-control" path="copyCount"/>
+                                </div>
                         </div>
                     </div>
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="from-group">
-                            <form:label path="author.firstName">Ім'я автора: </form:label><br/>
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                            <form:label path="author.firstName">Ім'я автора: </form:label>
+                                </div>
+                            <div class="col-md-8">
                             <form:input class="form-control" path="author.firstName"/>
+                                </div>
                         </div>
                     </div>
                     <div style="margin-bottom: 5px" class="group">
-                        <div class="from-group">
-                            <form:label path="author.lastName">Прізвище автора: </form:label><br/>
+                        <div class="from-group row">
+                            <div class="col-md-4">
+                            <form:label path="author.lastName">Прізвище автора: </form:label>
+                                </div>
+                            <div class="col-md-8">
                             <form:input class="form-control" path="author.lastName"/>
+                                </div>
                         </div>
                     </div>
                     <div style="margin-top:10px" class="form-group">
@@ -113,7 +141,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <input id="deleteChecked" type="submit" value="Submit now"/>
+        <input id="deleteChecked" class="btn-warning" type="submit" value="Видалити відмічені"/>
     </form>
 </div>
 </body>
