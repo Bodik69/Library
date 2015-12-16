@@ -1,3 +1,10 @@
 .error{
     color: red;
 }
+caption {
+    font-size: 24px;
+    margin: auto;
+}
+.form-group {
+    margin-bottom: 0px;
+}
