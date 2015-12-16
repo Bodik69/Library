@@ -141,7 +141,8 @@
                 </tr>
             </c:forEach>
         </table>
-        <input id="deleteChecked" class="btn-warning" type="submit" value="Видалити відмічені"/>
+        <input id="deleteChecked" class="btn btn-warning" type="submit" value="Видалити відмічені"
+               onclick="if (confirm('Ви дійсно бажаєте видалити ці книги?')) return true; else return false;"/>
     </form>
 </div>
 </body>
