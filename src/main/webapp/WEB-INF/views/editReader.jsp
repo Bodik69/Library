@@ -10,7 +10,7 @@
     <script type="text/javascript" src="../../resources/js/hideCheckBoxes.js"></script>
     <script type="text/javascript" src="../../resources/js/reader/readerFormValidation.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-    <link href="../../resources/js/reader/reader.css" rel="stylesheet">
+    <link href="../../resources/css/reader.css" rel="stylesheet">
     <title>Редагування читача</title>
 </head>
 <body>
