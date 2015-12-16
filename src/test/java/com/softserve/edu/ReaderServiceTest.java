@@ -17,8 +17,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ReaderServiceTest {
     @Mock
@@ -37,6 +38,14 @@ public class ReaderServiceTest {
     }
 
     @Test
+    public void testUpdateReader() {
+        Reader reader = readers.get(0);
+        when(readerDAO.find(anyInt())).thenReturn(reader);
+        readerService.update(reader, reader.getIdReader());
+        verify(readerDAO, atLeastOnce()).find(anyInt());
+    }
+
+    @Test
     public void testFindById() {
         Reader reader = readers.get(0);
         when(readerDAO.find(anyInt())).thenReturn(reader);
@@ -44,8 +53,9 @@ public class ReaderServiceTest {
     }
 
     @Test
-    public void testSaveReader() {
-        
+    public void testFindAllReaders(){
+        when(readerDAO.findAll()).thenReturn(readers);
+        Assert.assertEquals(readerService.findAll(), readers);
     }
 
     public List<Reader> getReaderList(){
