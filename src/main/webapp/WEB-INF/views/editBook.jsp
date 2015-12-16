@@ -95,8 +95,13 @@
                         </div>
                     </div>
                     <div style="margin-top:10px" class="form-group">
-                        <div class="col-sm-2" style="margin-bottom: 10px">
-                            <input class="btn btn-success" type="submit" value="Редагувати"/>
+                        <div class="row">
+                            <div class="col-sm-2" style="margin-bottom: 10px">
+                                <input class="btn btn-success" type="submit" value="Редагувати"/>
+                            </div>
+                            <div class="col-sm-offset-2 col-sm-2">
+                                <a href="/book" class="btn btn-primary">Повернутися</a>
+                            </div>
                         </div>
                     </div>
                 </form:form>
