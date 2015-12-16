@@ -14,7 +14,7 @@ public interface BookService {
 
     public void addNCopyOfBook(Integer idBook, Integer count);
 
-    public void updateBookById(Book book, Integer id);
+    public boolean updateBookById(Book book, Integer id);
 
     public void update(Book book);
 
