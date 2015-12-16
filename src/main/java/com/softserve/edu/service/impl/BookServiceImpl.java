@@ -39,28 +39,31 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void save(Book book) {
-        Author bookAuthor = book.getAuthor();
-        if(!(bookAuthor.getFirstName().equals("") && bookAuthor.getLastName().equals("")))
-        {
-            Author author = authorDAO.findAuthorByFullName(bookAuthor.getFirstName(), bookAuthor.getLastName());
-            if (author == null) {
-                authorDAO.save(book.getAuthor());
+    public boolean save(Book book) {
+        Book existingBook = bookDAO.findBookByOtherBookProperties(book);
+        if(existingBook == null) {
+            Author bookAuthor = book.getAuthor();
+            if (!(bookAuthor.getFirstName().equals("") && bookAuthor.getLastName().equals(""))) {
+                Author author = authorDAO.findAuthorByFullName(bookAuthor.getFirstName(), bookAuthor.getLastName());
+                if (author == null) {
+                    authorDAO.save(book.getAuthor());
+                } else {
+                    book.setAuthor(author);
+                }
+                addBookToAuthor(book);
             } else {
-                book.setAuthor(author);
+                book.setAuthor(null);
             }
-            addBookToAuthor(book);
+            bookDAO.save(book);
+            for (int i = 0; i < book.getCopyCount(); i++) {
+                Copy copy = new Copy();
+                copy.setBook(book);
+                copy.setIsInStock(true);
+                copyDAO.save(copy);
+            }
+            return true;
         }
-        else {
-            book.setAuthor(null);
-        }
-        bookDAO.save(book);
-        for(int i = 0; i < book.getCopyCount(); i++) {
-            Copy copy = new Copy();
-            copy.setBook(book);
-            copy.setIsInStock(true);
-            copyDAO.save(copy);
-        }
+        return false;
     }
 
     @Override

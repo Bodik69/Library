@@ -32,7 +32,10 @@ public class BookController {
 
     @RequestMapping(value = "/book", method = RequestMethod.POST)
     public String addBook(@ModelAttribute("book") Book book, BindingResult result) {
-        bookService.save(book);
+        if(!bookService.save(book))
+        {
+            error = "Неможливо додати книгу оскільки вона уже є у базі";
+        }
         return "redirect:/book";
     }
 

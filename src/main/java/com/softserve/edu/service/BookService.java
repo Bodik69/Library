@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BookService {
 
-    public void save(Book book);
+    public boolean save(Book book);
 
     public void addNCopyOfBook(Integer idBook, Integer count);
 
