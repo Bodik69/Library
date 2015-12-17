@@ -47,7 +47,6 @@ public class OrderReaderServiceImpl implements OrderReaderService {
             }
         }
 
-
         if(copy.getIsInStock()==true) {
             orderReader.setCopy(copy);
             orderReader.getCopy().setIsInStock(false);

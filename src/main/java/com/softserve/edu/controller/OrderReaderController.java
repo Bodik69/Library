@@ -63,9 +63,8 @@ public class OrderReaderController {
 
     @RequestMapping("editOrder/{idOrder}")
     public String editOrder(@PathVariable("idOrder") Integer idOrder, Model model) {
-        OrderReader editOrderReader= orderReaderService.find(idOrder);
-        model.addAttribute("editOrderReader", editOrderReader);
-        model.addAttribute("orderReader", new OrderReader());
+        OrderReader orderReader= orderReaderService.find(idOrder);
+        model.addAttribute("orderReader", orderReader);
         model.addAttribute("id", idOrder);
         return "editOrderReader";
     }
@@ -81,8 +80,12 @@ public class OrderReaderController {
     @RequestMapping(value = "editOrder/saveOrder/{idOrder}", method = RequestMethod.POST)
     public String updateOrder(@PathVariable("idOrder") Integer idOrder,
                                @ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
-
-        orderReaderService.update(orderReader, idOrder);
+        boolean checkInventoryId = orderReaderService.isBookExist(orderReader);
+        boolean checkReaderById = orderReaderService.isReaderExist(orderReader);
+        if(checkInventoryId && checkReaderById){
+            orderReaderService.update(orderReader, idOrder);
+        }
+        else flag = false;
         return "redirect:/order";
     }
 }
