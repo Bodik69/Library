@@ -18,6 +18,7 @@ import java.util.List;
 @Controller
 public class ReaderController {
     private Boolean exist = false;
+    private Boolean canDeleteReader = true;
 
     @Autowired
     private ReaderService readerService;
@@ -28,6 +29,7 @@ public class ReaderController {
         model.addAttribute("reader", new Reader());
         model.addAttribute("readerList", readers);
         model.addAttribute("exist", exist);
+        model.addAttribute("canDelete", canDeleteReader);
         exist = false;
         return "reader";
 
@@ -42,15 +44,19 @@ public class ReaderController {
 
     @RequestMapping(value="delete/{idReader}", method = RequestMethod.GET)
     public String deleteReader(@PathVariable("idReader") Integer idReader) {
-        readerService.delete(idReader);
+        canDeleteReader = readerService.delete(idReader);
         return "redirect:/reader";
     }
 
     @RequestMapping(value = "/reader/delete", method = RequestMethod.POST)
     public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
         for (int i = 0; i < list.length; i++){
-            readerService.delete(list[i]);
+            Boolean flag = readerService.delete(list[i]);
+            if (flag == false){
+                canDeleteReader = flag;
+            }
         }
+
         return "redirect:/reader";
     }
 

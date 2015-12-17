@@ -2,6 +2,7 @@ package com.softserve.edu.dao.impl;
 
 import com.softserve.edu.dao.ReaderDAO;
 import com.softserve.edu.entity.Author;
+import com.softserve.edu.entity.OrderReader;
 import com.softserve.edu.entity.Reader;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -22,6 +23,13 @@ public class ReaderDAOImpl extends GenericDAOImpl<Reader> implements ReaderDAO{
 
     public ReaderDAOImpl() {
         super(Reader.class);
+    }
+
+    @Override
+    public List<OrderReader> findOwerReaders(Integer id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM OrderReader WHERE idReader = :id AND dataReturn IS NULL");
+        query.setParameter("id", id);
+        return query.list();
     }
 
     @Override

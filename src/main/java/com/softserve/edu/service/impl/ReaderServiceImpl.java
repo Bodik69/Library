@@ -1,6 +1,7 @@
 package com.softserve.edu.service.impl;
 
 import com.softserve.edu.dao.ReaderDAO;
+import com.softserve.edu.entity.OrderReader;
 import com.softserve.edu.entity.Reader;
 import com.softserve.edu.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class ReaderServiceImpl implements ReaderService {
     @Transactional
     public Boolean save(Reader reader) {
         Reader r = readerDAO.findReaderByFullName(reader.getName(), reader.getSurname(), reader.getBirth());
-        if (r == null){
+        if (r == null) {
             readerDAO.save(reader);
             return false;
-        }else {
+        } else {
             return true;
         }
     }
@@ -56,7 +57,12 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     @Transactional
-    public void delete(Integer id) {
-        readerDAO.delete(id);
+    public Boolean delete(Integer id) {
+        List<OrderReader> list = readerDAO.findOwerReaders(id);
+        if (list.isEmpty()){
+            readerDAO.delete(id);
+            return true;
+        } else
+            return false;
     }
 }

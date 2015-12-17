@@ -26,6 +26,12 @@
     </div>
     <script>showAlert();</script>
 </c:if>
+<c:if test="${canDelete == false}">
+    <div id="error-container" class="alert alert-danger col-md-8 col-md-offset-2">
+        <span>Деяких читачів неможливо видалити, бо вони ще не здали всі книги!</span>
+    </div>
+    <script>showAlert();</script>
+</c:if>
 
 <div class="container">
     <div id="addingbox" style="margin-top:30px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -102,6 +108,7 @@
             <caption>Читачі бібліотеки</caption>
             <tr>
                 <th>Вибір</th>
+                <th>Номер</th>
                 <th>Ім'я</th>
                 <th>Прізвище</th>
                 <th>Адреса</th>
@@ -114,6 +121,7 @@
             <c:forEach var="reader" items="${readerList}">
                 <tr>
                     <td><input type="checkbox" class="checkbox" name="idlist" value="${reader.idReader}"/></td>
+                    <td>${reader.idReader}</td>
                     <td>${reader.name}</td>
                     <td>${reader.surname}</td>
                     <td>${reader.adress}</td>
@@ -129,6 +137,11 @@
         <input id="deleteChecked" type="submit" class="btn btn-warning" value="Видалити обране"
                onclick="if (confirm('Ви дійсно бажаєте видалити цих читачів?')) return true; else return false;"/>
     </form>
+</div>
+<div class="row">
+    <div style="margin-bottom:10px;" class="col-sm-offset-5 col-sm-2 text-center">
+        <a href="/" class="btn btn-primary">На головну</a>
+    </div>
 </div>
 </body>
 </html>
