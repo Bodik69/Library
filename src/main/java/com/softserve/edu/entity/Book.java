@@ -76,7 +76,7 @@ public class Book {
         }
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Book{" +
                 "\n\tidBook = " + idBook +
@@ -88,5 +88,5 @@ public class Book {
                 ", \n\tpages = " + pages +
                 ", \n\tcopyCount = " + copyCount +
                 "\n}";
-    }
+    }*/
 }

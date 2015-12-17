@@ -24,11 +24,12 @@ public class BookDAOImpl extends GenericDAOImpl<Book> implements BookDAO {
 
     @Override
     public Book findBookByOtherBookProperties(Book book) {
-        Query query = sessionFactory.getCurrentSession().createQuery("FROM Book WHERE title = :title AND edition = :edition AND year = :year AND pages = :pages");
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM Book WHERE title = :title AND edition = :edition AND year = :year AND pages = :pages AND code != :code");
         query.setParameter("title", book.getTitle());
         query.setParameter("edition", book.getEdition());
         query.setParameter("year", book.getYear());
         query.setParameter("pages", book.getPages());
+        query.setParameter("code", book.getIdBook());
         return (Book)query.uniqueResult();
     }
 }

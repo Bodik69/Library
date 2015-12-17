@@ -33,10 +33,12 @@ public class AuthorDAOImpl extends GenericDAOImpl<Author> implements AuthorDAO {
 
     @Override
     public void deleteBookByID(Author author,final Integer id) {
-        author.getBooks().removeIf(new Predicate<Book>() {
-            public boolean test(Book book) {
-                return book.getIdBook().equals(id);
-            }
-        });
+        if(author != null) {
+            author.getBooks().removeIf(new Predicate<Book>() {
+                public boolean test(Book book) {
+                    return book.getIdBook().equals(id);
+                }
+            });
+        }
     }
 }
