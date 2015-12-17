@@ -31,6 +31,7 @@ public class ReaderController {
         model.addAttribute("exist", exist);
         model.addAttribute("canDelete", canDeleteReader);
         exist = false;
+        canDeleteReader = true;
         return "reader";
 
     }
