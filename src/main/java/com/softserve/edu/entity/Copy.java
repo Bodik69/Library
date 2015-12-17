@@ -22,7 +22,7 @@ public class Copy {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name="code", nullable = false)
+    @JoinColumn(name = "code", nullable = false)
     private Book book;
 
     @Column(name = "isInStock", nullable = false)
@@ -38,25 +38,25 @@ public class Copy {
     }
 
     @Override
-    public boolean equals(final Object obj){
-        if(obj instanceof Copy){
+    public boolean equals(final Object obj) {
+        if (obj instanceof Copy) {
             final Copy other = (Copy) obj;
             return new EqualsBuilder()
                     .append(id, other.id)
                     .append(book, other.book)
                     .append(isInStock, other.isInStock)
                     .isEquals();
-        } else{
+        } else {
             return false;
         }
     }
 
     @Override
     public String toString() {
-        return "Copy{" +
-                "\n\tid=" + id +
-                ", \n\tbook=" + book.getTitle() +
-                ", \n\tisInStock=" + isInStock +
-                "\n}";
+        return "Copy{"
+                + "\n\tid=" + id
+                + ", \n\tbook=" + book.getTitle()
+                + ", \n\tisInStock=" + isInStock
+                + "\n}";
     }
 }

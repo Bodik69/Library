@@ -18,21 +18,21 @@ import java.sql.Date;
 public class OrderReader {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idOrder", nullable = false)
+    @Column(name = "idOrder", nullable = false)
     private Integer idOrder;
 
     @ManyToOne
-    @JoinColumn(name="idReader", nullable = false)
+    @JoinColumn(name = "idReader", nullable = false)
     private Reader reader;
 
     @ManyToOne
-    @JoinColumn(name="inventoryNumber", nullable = false)
+    @JoinColumn(name = "inventoryNumber", nullable = false)
     private Copy copy;
 
-    @Column(name="dataOrder", nullable = false)
+    @Column(name = "dataOrder", nullable = false)
     private Date dataOrder;
 
-    @Column(name="dataReturn")
+    @Column(name = "dataReturn")
     private Date dataReturn;
 
     @Override
@@ -47,8 +47,8 @@ public class OrderReader {
     }
 
     @Override
-    public boolean equals(final Object obj){
-        if(obj instanceof OrderReader){
+    public boolean equals(final Object obj) {
+        if (obj instanceof OrderReader) {
             final OrderReader other = (OrderReader) obj;
             return new EqualsBuilder()
                     .append(idOrder, other.idOrder)
@@ -57,20 +57,20 @@ public class OrderReader {
                     .append(dataOrder, other.dataOrder)
                     .append(dataReturn, other.dataReturn)
                     .isEquals();
-        } else{
+        } else {
             return false;
         }
     }
 
     @Override
     public String toString() {
-        return "OrderReader{" +
-                "\n\tidOrder=" + idOrder +
-                ", \n\treader=" + reader.getName() +
-                ", \n\treader=" + reader.getSurname() +
-                ", \n\tcopy=" + copy.getBook().getTitle() +
-                ", \n\tdataOrder=" + dataOrder +
-                ", \n\tdataReturn=" + dataReturn +
-                "\n}";
+        return "OrderReader{"
+                + "\n\tidOrder=" + idOrder
+                + ", \n\treader=" + reader.getName()
+                + ", \n\treader=" + reader.getSurname()
+                + ", \n\tcopy=" + copy.getBook().getTitle()
+                + ", \n\tdataOrder=" + dataOrder
+                + ", \n\tdataReturn=" + dataReturn
+                + "\n}";
     }
 }

@@ -26,14 +26,14 @@ public class OrderReaderController {
     private boolean flag = true;
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String findAllOrders(Model model) {
-        model.addAttribute("reader",new Reader());
-        model.addAttribute("copy",new Copy());
-        model.addAttribute("orderReader",new OrderReader());
+        model.addAttribute("reader", new Reader());
+        model.addAttribute("copy", new Copy());
+        model.addAttribute("orderReader", new OrderReader());
         model.addAttribute("orders", orderReaderService.findAll());
-        model.addAttribute("check",check);
-        model.addAttribute("flag",flag);
-        check=true;
-        flag=true;
+        model.addAttribute("check", check);
+        model.addAttribute("flag", flag);
+        check = true;
+        flag = true;
         return "order";
     }
 
@@ -41,11 +41,13 @@ public class OrderReaderController {
     public String addOrder(@ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
         boolean checkInventoryId = orderReaderService.isBookExist(orderReader);
         boolean checkReaderById = orderReaderService.isReaderExist(orderReader);
-        if(checkInventoryId && checkReaderById){
+        if (checkInventoryId && checkReaderById) {
             orderReader.setDataOrder(Date.valueOf(LocalDate.now()));
             check = orderReaderService.save(orderReader);
         }
-        else flag = false;
+        else {
+            flag = false;
+        }
         return "redirect:/order";
     }
 
@@ -63,7 +65,7 @@ public class OrderReaderController {
 
     @RequestMapping("editOrder/{idOrder}")
     public String editOrder(@PathVariable("idOrder") Integer idOrder, Model model) {
-        OrderReader orderReader= orderReaderService.find(idOrder);
+        OrderReader orderReader = orderReaderService.find(idOrder);
         model.addAttribute("orderReader", orderReader);
         model.addAttribute("id", idOrder);
         return "editOrderReader";
@@ -71,7 +73,7 @@ public class OrderReaderController {
 
     @RequestMapping(value = "/order/delete", method = RequestMethod.POST)
     public String deleteAllSelected(@RequestParam("idlist")Integer[] list) {
-        for (int i = 0; i < list.length; i++){
+        for (int i = 0; i < list.length; i++) {
             orderReaderService.delete(list[i]);
         }
         return "redirect:/order";
@@ -82,10 +84,12 @@ public class OrderReaderController {
                                @ModelAttribute("orderReader") OrderReader orderReader, BindingResult result) {
         boolean checkInventoryId = orderReaderService.isBookExist(orderReader);
         boolean checkReaderById = orderReaderService.isReaderExist(orderReader);
-        if(checkInventoryId && checkReaderById){
+        if (checkInventoryId && checkReaderById) {
             orderReaderService.update(orderReader, idOrder);
         }
-        else flag = false;
+        else {
+            flag = false;
+        }
         return "redirect:/order";
     }
 }

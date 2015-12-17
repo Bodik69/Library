@@ -36,18 +36,14 @@ public class OrderReaderServiceImpl implements OrderReaderService {
         boolean check = false;
         Copy copy = copyDAO.findCopyByInventory(orderReader.getCopy().getId());
         List<OrderReader> list = orderReaderDAO.findByReaderId(orderReader.getReader().getIdReader());
-
-
         Integer code = copy.getBook().getIdBook();
-
-        for(OrderReader orderReader1:list) {
-
-            if(orderReader1.getCopy().getBook().getIdBook() == code) {
+        for (OrderReader orderReader1:list) {
+            if (orderReader1.getCopy().getBook().getIdBook() == code) {
                 return false;
             }
         }
 
-        if(copy.getIsInStock()==true) {
+        if (copy.getIsInStock() == true) {
             orderReader.setCopy(copy);
             orderReader.getCopy().setIsInStock(false);
             Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
@@ -56,7 +52,9 @@ public class OrderReaderServiceImpl implements OrderReaderService {
             orderReaderDAO.save(orderReader);
             return true;
         }
-        else return false;
+        else {
+            return false;
+        }
 
     }
 
@@ -72,7 +70,7 @@ public class OrderReaderServiceImpl implements OrderReaderService {
     }
 
     @Override
-    public void update(OrderReader orderReader,Integer idOrder) {
+    public void update(OrderReader orderReader, Integer idOrder) {
         OrderReader orderReaderUpdate = find(idOrder);
         orderReaderUpdate.setCopy(orderReader.getCopy());
         orderReaderUpdate.setReader(orderReader.getReader());
@@ -108,7 +106,7 @@ public class OrderReaderServiceImpl implements OrderReaderService {
     @Override
     public boolean isReaderExist(OrderReader orderReader) {
         Reader reader = readerDAO.findReaderById(orderReader.getReader().getIdReader());
-        if(reader == null) {
+        if (reader == null) {
             return false;
         }
         return true;

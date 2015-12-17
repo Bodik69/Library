@@ -15,33 +15,33 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name="book")
+@Table(name = "book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="code", nullable = false)
+    @Column(name = "code", nullable = false)
     private Integer idBook;
 
-    @Column(name="title", nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
     @ManyToOne
-    @JoinColumn(name="idAuthor")
+    @JoinColumn(name = "idAuthor")
     private Author author;
 
-    @Column(name="edition", nullable = false)
+    @Column(name = "edition", nullable = false)
     private  String edition;
 
-    @Column(name="year", nullable = false)
+    @Column(name = "year", nullable = false)
     private Integer year;
 
-    @Column(name="pages", nullable = false)
+    @Column(name = "pages", nullable = false)
     private Integer pages;
 
-    @Column(name="copyCount", nullable = false)
+    @Column(name = "copyCount", nullable = false)
     private Integer copyCount;
 
-    @ManyToMany(mappedBy="books", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
     private Set<Author> coAuthors;
 
     @Override
@@ -58,8 +58,8 @@ public class Book {
     }
 
     @Override
-    public boolean equals(final Object obj){
-        if(obj instanceof Book){
+    public boolean equals(final Object obj) {
+        if (obj instanceof Book) {
             final Book other = (Book) obj;
             return new EqualsBuilder()
                     .append(idBook, other.idBook)
@@ -71,7 +71,7 @@ public class Book {
                     .append(copyCount, other.copyCount)
                     .append(coAuthors, other.coAuthors)
                     .isEquals();
-        } else{
+        } else {
             return false;
         }
     }

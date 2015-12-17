@@ -55,8 +55,8 @@ public class Reader {
     }
 
     @Override
-    public boolean equals(final Object obj){
-        if(obj instanceof Reader){
+    public boolean equals(final Object obj) {
+        if (obj instanceof Reader) {
             final Reader other = (Reader) obj;
             return new EqualsBuilder()
                     .append(name, other.name)
@@ -67,21 +67,21 @@ public class Reader {
                     .append(dateOfCreate, other.dateOfCreate)
                     .append(orders, other.orders)
                     .isEquals();
-        } else{
+        } else {
             return false;
         }
     }
 
     @Override
     public String toString() {
-        return "Reader{" +
-                "\n\tidReader = " + idReader +
-                ", \n\tname = " + name +
-                ", \n\tsurname = " + surname +
-                ", \n\tadress = " + adress +
-                ", \n\tphone = " + phone +
-                ", \n\tbirth = " + birth +
-                ", \n\tdateOfCreate = " + dateOfCreate +
-                "\n}";
+        return "Reader{"
+                + "\n\tidReader = " + idReader
+                + ", \n\tname = " + name
+                + ", \n\tsurname = " + surname
+                + ", \n\tadress = " + adress
+                + ", \n\tphone = " + phone
+                + ", \n\tbirth = " + birth
+                + ", \n\tdateOfCreate = " + dateOfCreate
+                + "\n}";
     }
 }

@@ -14,21 +14,21 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name="author")
+@Table(name = "author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idAuthor", nullable = false)
+    @Column(name = "idAuthor", nullable = false)
     private Integer idAuthor;
 
-    @Column(name="firstName", nullable = false)
+    @Column(name = "firstName", nullable = false)
     private String firstName;
 
-    @Column(name="lastName", nullable = false)
+    @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name="author_book", joinColumns=@JoinColumn(name="idAuthor"), inverseJoinColumns=@JoinColumn(name="code"))
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "idAuthor"), inverseJoinColumns = @JoinColumn(name = "code"))
     private Set<Book> books;
 
     @Override
@@ -41,8 +41,8 @@ public class Author {
     }
 
     @Override
-    public boolean equals(final Object obj){
-        if(obj instanceof Author){
+    public boolean equals(final Object obj) {
+        if (obj instanceof Author) {
             final Author other = (Author) obj;
             return new EqualsBuilder()
                     .append(idAuthor, other.idAuthor)
@@ -50,17 +50,17 @@ public class Author {
                     .append(lastName, other.lastName)
                     .append(books, other.books)
                     .isEquals();
-        } else{
+        } else {
             return false;
         }
     }
 
     @Override
     public String toString() {
-        return "Author{" +
-                "\n\tidAuthor=" + idAuthor +
-                ", \n\tfirstName=" + firstName +
-                ", \n\tlastName=" + lastName +
-                "\n}";
+        return "Author{"
+                + "\n\tidAuthor=" + idAuthor
+                + ", \n\tfirstName=" + firstName
+                + ", \n\tlastName=" + lastName
+                + "\n}";
     }
 }
